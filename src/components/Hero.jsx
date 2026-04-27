@@ -44,7 +44,7 @@ export default function Hero() {
         alignItems: 'center',
         justifyContent: 'center',
         textAlign: 'center',
-        padding: '6rem 1.5rem 4rem',
+        padding: '6rem 1.5rem 5rem',
         position: 'relative',
         overflow: 'hidden',
       }}
@@ -176,36 +176,6 @@ export default function Hero() {
         ))}
       </div>
 
-      {/* Scroll indicator */}
-      <div
-        className="animate-fade-in-up animate-delay-500"
-        style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '0.5rem' }}
-      >
-        <span style={{ fontSize: '0.75rem', color: '#3d7090', letterSpacing: '0.1em', textTransform: 'uppercase' }}>
-          Explorar catálogo
-        </span>
-        <div style={{
-          width: 24, height: 40,
-          border: '1px solid #163860',
-          borderRadius: 12,
-          display: 'flex', alignItems: 'flex-start', justifyContent: 'center',
-          paddingTop: '6px',
-        }}>
-          <div style={{
-            width: 4, height: 8,
-            borderRadius: 2,
-            background: '#5cc8e0',
-            animation: 'scrollDot 1.8s ease infinite',
-          }} />
-        </div>
-      </div>
-
-      <style>{`
-        @keyframes scrollDot {
-          0%, 100% { transform: translateY(0); opacity: 1; }
-          50%       { transform: translateY(12px); opacity: 0.3; }
-        }
-      `}</style>
     </section>
   )
 }
