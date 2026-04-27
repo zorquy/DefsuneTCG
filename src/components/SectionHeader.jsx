@@ -8,12 +8,12 @@ export default function SectionHeader({ title, subtitle, accent }) {
           fontWeight: 600,
           letterSpacing: '0.15em',
           textTransform: 'uppercase',
-          color: '#d4af6a',
+          color: '#5cc8e0',
           marginBottom: '0.75rem',
           padding: '0.25rem 0.75rem',
-          border: '1px solid rgba(212,175,106,0.3)',
+          border: '1px solid rgba(92,200,224,0.3)',
           borderRadius: '999px',
-          background: 'rgba(212,175,106,0.06)',
+          background: 'rgba(92,200,224,0.06)',
         }}>
           {accent}
         </span>
@@ -22,7 +22,7 @@ export default function SectionHeader({ title, subtitle, accent }) {
         fontFamily: 'var(--font-display)',
         fontSize: 'clamp(2rem, 5vw, 3rem)',
         fontWeight: 500,
-        color: '#f0f6ff',
+        color: '#e8f4ff',
         margin: '0 0 0.75rem',
         lineHeight: 1.1,
         letterSpacing: '-0.01em',
@@ -31,7 +31,7 @@ export default function SectionHeader({ title, subtitle, accent }) {
       </h2>
       {subtitle && (
         <p style={{
-          color: '#8892a4',
+          color: '#6aa0bc',
           fontSize: '0.9375rem',
           maxWidth: '520px',
           lineHeight: 1.6,
@@ -42,7 +42,7 @@ export default function SectionHeader({ title, subtitle, accent }) {
       )}
       <div style={{
         width: 48, height: 2,
-        background: 'linear-gradient(90deg, #d4af6a, transparent)',
+        background: 'linear-gradient(90deg, #5cc8e0, transparent)',
         marginTop: '1.25rem',
         borderRadius: 1,
       }} />

@@ -20,15 +20,15 @@ function Modal({ title, children, onClose }) {
       position: 'fixed', inset: 0, zIndex: 100,
       display: 'flex', alignItems: 'center', justifyContent: 'center',
       padding: '1rem',
-      background: 'rgba(4,13,26,0.85)',
+      background: 'rgba(3,8,16,0.85)',
       backdropFilter: 'blur(8px)',
     }}
       onClick={e => { if (e.target === e.currentTarget) onClose() }}
     >
       <div style={{
         width: '100%', maxWidth: 560,
-        background: '#112035',
-        border: '1px solid #244068',
+        background: '#091628',
+        border: '1px solid #163860',
         borderRadius: '16px',
         padding: '1.75rem',
         maxHeight: '90vh',
@@ -39,7 +39,7 @@ function Modal({ title, children, onClose }) {
             fontFamily: 'var(--font-display)',
             fontSize: '1.25rem',
             fontWeight: 500,
-            color: '#f0f6ff',
+            color: '#e8f4ff',
             margin: 0,
           }}>
             {title}
@@ -48,11 +48,11 @@ function Modal({ title, children, onClose }) {
             onClick={onClose}
             style={{
               background: 'none', border: 'none', cursor: 'pointer',
-              color: '#5c6880', padding: '0.25rem',
+              color: '#3d7090', padding: '0.25rem',
               transition: 'color 0.2s',
             }}
-            onMouseEnter={e => e.currentTarget.style.color = '#f0f6ff'}
-            onMouseLeave={e => e.currentTarget.style.color = '#5c6880'}
+            onMouseEnter={e => e.currentTarget.style.color = '#e8f4ff'}
+            onMouseLeave={e => e.currentTarget.style.color = '#3d7090'}
           >
             <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
               <path d="M4 4l12 12M16 4L4 16" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round"/>
@@ -109,13 +109,13 @@ export default function AdminDashboard() {
     Number(p).toLocaleString('es-ES', { style: 'currency', currency: 'EUR' })
 
   return (
-    <div style={{ minHeight: '100vh', background: '#0a1628' }}>
+    <div style={{ minHeight: '100vh', background: '#060c1a' }}>
       {/* Top bar */}
       <header style={{
         position: 'sticky', top: 0, zIndex: 40,
-        background: 'rgba(4,13,26,0.95)',
+        background: 'rgba(3,8,16,0.95)',
         backdropFilter: 'blur(12px)',
-        borderBottom: '1px solid #1a304f',
+        borderBottom: '1px solid #0d2540',
         padding: '0 1.5rem',
         height: 60,
         display: 'flex', alignItems: 'center', justifyContent: 'space-between',
@@ -127,31 +127,31 @@ export default function AdminDashboard() {
             fontWeight: 600,
             letterSpacing: '0.1em',
             textTransform: 'uppercase',
-            color: '#f0f6ff',
+            color: '#e8f4ff',
           }}>
-            Defsune<span style={{ color: '#d4af6a' }}>TCG</span>
-            <span style={{ color: '#5c6880', fontSize: '0.75rem', fontFamily: 'var(--font-body)', fontWeight: 400, marginLeft: '0.5rem' }}>
+            Defsune<span style={{ color: '#5cc8e0' }}>TCG</span>
+            <span style={{ color: '#3d7090', fontSize: '0.75rem', fontFamily: 'var(--font-body)', fontWeight: 400, marginLeft: '0.5rem' }}>
               Admin
             </span>
           </span>
         </a>
         <div style={{ display: 'flex', alignItems: 'center', gap: '1rem' }}>
-          <span style={{ fontSize: '0.8125rem', color: '#5c6880' }}>{session?.user?.email}</span>
+          <span style={{ fontSize: '0.8125rem', color: '#3d7090' }}>{session?.user?.email}</span>
           <button
             onClick={signOut}
             style={{
               padding: '0.4rem 0.875rem',
               background: 'transparent',
-              border: '1px solid #244068',
+              border: '1px solid #163860',
               borderRadius: '6px',
-              color: '#8892a4',
+              color: '#6aa0bc',
               cursor: 'pointer',
               fontSize: '0.8125rem',
               fontWeight: 500,
               transition: 'all 0.2s',
             }}
-            onMouseEnter={e => { e.currentTarget.style.borderColor = '#5c6880'; e.currentTarget.style.color = '#f0f6ff' }}
-            onMouseLeave={e => { e.currentTarget.style.borderColor = '#244068'; e.currentTarget.style.color = '#8892a4' }}
+            onMouseEnter={e => { e.currentTarget.style.borderColor = '#3d7090'; e.currentTarget.style.color = '#e8f4ff' }}
+            onMouseLeave={e => { e.currentTarget.style.borderColor = '#163860'; e.currentTarget.style.color = '#6aa0bc' }}
           >
             Salir
           </button>
@@ -162,7 +162,7 @@ export default function AdminDashboard() {
         {/* Tabs */}
         <div style={{
           display: 'flex', gap: '0.375rem', flexWrap: 'wrap',
-          borderBottom: '1px solid #1a304f',
+          borderBottom: '1px solid #0d2540',
           marginBottom: '2rem',
           paddingBottom: '0',
         }}>
@@ -174,8 +174,8 @@ export default function AdminDashboard() {
                 padding: '0.625rem 1rem',
                 background: 'none',
                 border: 'none',
-                borderBottom: activeTab === tab.key ? '2px solid #d4af6a' : '2px solid transparent',
-                color: activeTab === tab.key ? '#f0f6ff' : '#5c6880',
+                borderBottom: activeTab === tab.key ? '2px solid #5cc8e0' : '2px solid transparent',
+                color: activeTab === tab.key ? '#e8f4ff' : '#3d7090',
                 cursor: 'pointer',
                 fontSize: '0.875rem',
                 fontWeight: activeTab === tab.key ? 600 : 400,
@@ -184,8 +184,8 @@ export default function AdminDashboard() {
                 marginBottom: '-1px',
                 whiteSpace: 'nowrap',
               }}
-              onMouseEnter={e => { if (activeTab !== tab.key) e.currentTarget.style.color = '#c0cad8' }}
-              onMouseLeave={e => { if (activeTab !== tab.key) e.currentTarget.style.color = '#5c6880' }}
+              onMouseEnter={e => { if (activeTab !== tab.key) e.currentTarget.style.color = '#90c0dc' }}
+              onMouseLeave={e => { if (activeTab !== tab.key) e.currentTarget.style.color = '#3d7090' }}
             >
               {tab.label}
             </button>
@@ -198,7 +198,7 @@ export default function AdminDashboard() {
             fontFamily: 'var(--font-display)',
             fontSize: '1.375rem',
             fontWeight: 500,
-            color: '#f0f6ff',
+            color: '#e8f4ff',
             margin: 0,
           }}>
             {currentTab.label}
@@ -208,10 +208,10 @@ export default function AdminDashboard() {
             style={{
               display: 'inline-flex', alignItems: 'center', gap: '0.375rem',
               padding: '0.5rem 1rem',
-              background: 'linear-gradient(135deg, #d4af6a, #c9a05a)',
+              background: 'linear-gradient(135deg, #5cc8e0, #3aacc4)',
               border: 'none',
               borderRadius: '8px',
-              color: '#040d1a',
+              color: '#030810',
               cursor: 'pointer',
               fontSize: '0.875rem',
               fontWeight: 600,
@@ -239,19 +239,19 @@ export default function AdminDashboard() {
 
         {!loading && activeTab !== 'events' && (
           <div style={{
-            background: '#112035',
-            border: '1px solid #1a304f',
+            background: '#091628',
+            border: '1px solid #0d2540',
             borderRadius: '12px',
             overflow: 'hidden',
           }}>
             {products.length === 0 ? (
-              <div style={{ padding: '3rem', textAlign: 'center', color: '#5c6880' }}>
+              <div style={{ padding: '3rem', textAlign: 'center', color: '#3d7090' }}>
                 Sin productos. Añade el primero.
               </div>
             ) : (
               <table style={{ width: '100%', borderCollapse: 'collapse' }}>
                 <thead>
-                  <tr style={{ borderBottom: '1px solid #1a304f' }}>
+                  <tr style={{ borderBottom: '1px solid #0d2540' }}>
                     {['Imagen', 'Nombre', 'Precio', 'Certif.', 'Acciones'].map(h => (
                       <th key={h} style={{
                         padding: '0.75rem 1rem',
@@ -260,7 +260,7 @@ export default function AdminDashboard() {
                         fontWeight: 600,
                         textTransform: 'uppercase',
                         letterSpacing: '0.08em',
-                        color: '#5c6880',
+                        color: '#3d7090',
                       }}>
                         {h}
                       </th>
@@ -272,10 +272,10 @@ export default function AdminDashboard() {
                     <tr
                       key={p.id}
                       style={{
-                        borderBottom: i < products.length - 1 ? '1px solid #1a304f' : 'none',
+                        borderBottom: i < products.length - 1 ? '1px solid #0d2540' : 'none',
                         transition: 'background 0.15s',
                       }}
-                      onMouseEnter={e => e.currentTarget.style.background = 'rgba(26,48,79,0.4)'}
+                      onMouseEnter={e => e.currentTarget.style.background = 'rgba(13,37,64,0.4)'}
                       onMouseLeave={e => e.currentTarget.style.background = 'transparent'}
                     >
                       <td style={{ padding: '0.75rem 1rem' }}>
@@ -286,21 +286,21 @@ export default function AdminDashboard() {
                             style={{ width: 36, height: 50, objectFit: 'cover', borderRadius: 4 }}
                           />
                         ) : (
-                          <div style={{ width: 36, height: 50, background: '#1a304f', borderRadius: 4 }} />
+                          <div style={{ width: 36, height: 50, background: '#0d2540', borderRadius: 4 }} />
                         )}
                       </td>
-                      <td style={{ padding: '0.75rem 1rem', color: '#f0f6ff', fontSize: '0.9rem', maxWidth: 220 }}>
+                      <td style={{ padding: '0.75rem 1rem', color: '#e8f4ff', fontSize: '0.9rem', maxWidth: 220 }}>
                         <div style={{ fontWeight: 500 }}>{p.name}</div>
                         {p.description && (
                           <div style={{
-                            fontSize: '0.75rem', color: '#5c6880', marginTop: '0.2rem',
+                            fontSize: '0.75rem', color: '#3d7090', marginTop: '0.2rem',
                             overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap',
                           }}>
                             {p.description}
                           </div>
                         )}
                       </td>
-                      <td style={{ padding: '0.75rem 1rem', color: '#d4af6a', fontWeight: 600, fontSize: '0.9rem', whiteSpace: 'nowrap' }}>
+                      <td style={{ padding: '0.75rem 1rem', color: '#5cc8e0', fontWeight: 600, fontSize: '0.9rem', whiteSpace: 'nowrap' }}>
                         {formatPrice(p.price)}
                       </td>
                       <td style={{ padding: '0.75rem 1rem' }}>
@@ -316,7 +316,7 @@ export default function AdminDashboard() {
                           }}>
                             {p.certification}
                           </span>
-                        ) : <span style={{ color: '#5c6880' }}>—</span>}
+                        ) : <span style={{ color: '#3d7090' }}>—</span>}
                       </td>
                       <td style={{ padding: '0.75rem 1rem' }}>
                         <div style={{ display: 'flex', gap: '0.5rem' }}>
@@ -325,16 +325,16 @@ export default function AdminDashboard() {
                             style={{
                               padding: '0.375rem 0.75rem',
                               background: 'transparent',
-                              border: '1px solid #244068',
+                              border: '1px solid #163860',
                               borderRadius: '6px',
-                              color: '#8892a4',
+                              color: '#6aa0bc',
                               cursor: 'pointer',
                               fontSize: '0.8rem',
                               fontWeight: 500,
                               transition: 'all 0.2s',
                             }}
-                            onMouseEnter={e => { e.currentTarget.style.borderColor = '#d4af6a'; e.currentTarget.style.color = '#f0f6ff' }}
-                            onMouseLeave={e => { e.currentTarget.style.borderColor = '#244068'; e.currentTarget.style.color = '#8892a4' }}
+                            onMouseEnter={e => { e.currentTarget.style.borderColor = '#5cc8e0'; e.currentTarget.style.color = '#e8f4ff' }}
+                            onMouseLeave={e => { e.currentTarget.style.borderColor = '#163860'; e.currentTarget.style.color = '#6aa0bc' }}
                           >
                             Editar
                           </button>
@@ -368,19 +368,19 @@ export default function AdminDashboard() {
 
         {!loading && activeTab === 'events' && (
           <div style={{
-            background: '#112035',
-            border: '1px solid #1a304f',
+            background: '#091628',
+            border: '1px solid #0d2540',
             borderRadius: '12px',
             overflow: 'hidden',
           }}>
             {events.length === 0 ? (
-              <div style={{ padding: '3rem', textAlign: 'center', color: '#5c6880' }}>
+              <div style={{ padding: '3rem', textAlign: 'center', color: '#3d7090' }}>
                 Sin eventos. Añade el primero.
               </div>
             ) : (
               <table style={{ width: '100%', borderCollapse: 'collapse' }}>
                 <thead>
-                  <tr style={{ borderBottom: '1px solid #1a304f' }}>
+                  <tr style={{ borderBottom: '1px solid #0d2540' }}>
                     {['Nombre', 'Fecha', 'Ubicación', 'Acciones'].map(h => (
                       <th key={h} style={{
                         padding: '0.75rem 1rem',
@@ -389,7 +389,7 @@ export default function AdminDashboard() {
                         fontWeight: 600,
                         textTransform: 'uppercase',
                         letterSpacing: '0.08em',
-                        color: '#5c6880',
+                        color: '#3d7090',
                       }}>
                         {h}
                       </th>
@@ -401,19 +401,19 @@ export default function AdminDashboard() {
                     <tr
                       key={ev.id}
                       style={{
-                        borderBottom: i < events.length - 1 ? '1px solid #1a304f' : 'none',
+                        borderBottom: i < events.length - 1 ? '1px solid #0d2540' : 'none',
                         transition: 'background 0.15s',
                       }}
-                      onMouseEnter={e => e.currentTarget.style.background = 'rgba(26,48,79,0.4)'}
+                      onMouseEnter={e => e.currentTarget.style.background = 'rgba(13,37,64,0.4)'}
                       onMouseLeave={e => e.currentTarget.style.background = 'transparent'}
                     >
-                      <td style={{ padding: '0.75rem 1rem', color: '#f0f6ff', fontWeight: 500, fontSize: '0.9rem' }}>
+                      <td style={{ padding: '0.75rem 1rem', color: '#e8f4ff', fontWeight: 500, fontSize: '0.9rem' }}>
                         {ev.name}
                       </td>
-                      <td style={{ padding: '0.75rem 1rem', color: '#d4af6a', fontSize: '0.875rem', whiteSpace: 'nowrap' }}>
+                      <td style={{ padding: '0.75rem 1rem', color: '#5cc8e0', fontSize: '0.875rem', whiteSpace: 'nowrap' }}>
                         {new Date(ev.date + 'T00:00:00').toLocaleDateString('es-ES', { day: '2-digit', month: 'short', year: 'numeric' })}
                       </td>
-                      <td style={{ padding: '0.75rem 1rem', color: '#8892a4', fontSize: '0.875rem' }}>
+                      <td style={{ padding: '0.75rem 1rem', color: '#6aa0bc', fontSize: '0.875rem' }}>
                         {ev.location}
                       </td>
                       <td style={{ padding: '0.75rem 1rem' }}>
@@ -423,16 +423,16 @@ export default function AdminDashboard() {
                             style={{
                               padding: '0.375rem 0.75rem',
                               background: 'transparent',
-                              border: '1px solid #244068',
+                              border: '1px solid #163860',
                               borderRadius: '6px',
-                              color: '#8892a4',
+                              color: '#6aa0bc',
                               cursor: 'pointer',
                               fontSize: '0.8rem',
                               fontWeight: 500,
                               transition: 'all 0.2s',
                             }}
-                            onMouseEnter={e => { e.currentTarget.style.borderColor = '#d4af6a'; e.currentTarget.style.color = '#f0f6ff' }}
-                            onMouseLeave={e => { e.currentTarget.style.borderColor = '#244068'; e.currentTarget.style.color = '#8892a4' }}
+                            onMouseEnter={e => { e.currentTarget.style.borderColor = '#5cc8e0'; e.currentTarget.style.color = '#e8f4ff' }}
+                            onMouseLeave={e => { e.currentTarget.style.borderColor = '#163860'; e.currentTarget.style.color = '#6aa0bc' }}
                           >
                             Editar
                           </button>
@@ -486,8 +486,8 @@ export default function AdminDashboard() {
       {/* Delete confirm modal */}
       {deleteConfirm && (
         <Modal title="Confirmar eliminación" onClose={() => setDeleteConfirm(null)}>
-          <p style={{ color: '#c0cad8', fontSize: '0.9375rem', marginBottom: '1.5rem' }}>
-            ¿Seguro que quieres eliminar <strong style={{ color: '#f0f6ff' }}>"{deleteConfirm.name}"</strong>? Esta acción no se puede deshacer.
+          <p style={{ color: '#90c0dc', fontSize: '0.9375rem', marginBottom: '1.5rem' }}>
+            ¿Seguro que quieres eliminar <strong style={{ color: '#e8f4ff' }}>"{deleteConfirm.name}"</strong>? Esta acción no se puede deshacer.
           </p>
           <div style={{ display: 'flex', gap: '0.75rem', justifyContent: 'flex-end' }}>
             <button
@@ -495,9 +495,9 @@ export default function AdminDashboard() {
               style={{
                 padding: '0.625rem 1.25rem',
                 background: 'transparent',
-                border: '1px solid #244068',
+                border: '1px solid #163860',
                 borderRadius: '8px',
-                color: '#8892a4',
+                color: '#6aa0bc',
                 cursor: 'pointer',
                 fontSize: '0.9rem',
                 fontWeight: 500,

@@ -4,10 +4,10 @@ import { supabase } from '../../lib/supabase'
 const inputStyle = {
   width: '100%',
   padding: '0.625rem 0.875rem',
-  background: '#0a1628',
-  border: '1px solid #244068',
+  background: '#060c1a',
+  border: '1px solid #163860',
   borderRadius: '8px',
-  color: '#f0f6ff',
+  color: '#e8f4ff',
   fontSize: '0.9375rem',
   outline: 'none',
   boxSizing: 'border-box',
@@ -18,7 +18,7 @@ const labelStyle = {
   display: 'block',
   fontSize: '0.8125rem',
   fontWeight: 500,
-  color: '#8892a4',
+  color: '#6aa0bc',
   marginBottom: '0.375rem',
   letterSpacing: '0.04em',
 }
@@ -83,8 +83,8 @@ export default function EventForm({ event, onSaved, onCancel }) {
           onChange={set('name')}
           placeholder="Ej: Card Show Madrid"
           style={inputStyle}
-          onFocus={e => e.target.style.borderColor = '#d4af6a'}
-          onBlur={e => e.target.style.borderColor = '#244068'}
+          onFocus={e => e.target.style.borderColor = '#5cc8e0'}
+          onBlur={e => e.target.style.borderColor = '#163860'}
         />
       </div>
 
@@ -96,8 +96,8 @@ export default function EventForm({ event, onSaved, onCancel }) {
           value={form.date}
           onChange={set('date')}
           style={{ ...inputStyle, colorScheme: 'dark' }}
-          onFocus={e => e.target.style.borderColor = '#d4af6a'}
-          onBlur={e => e.target.style.borderColor = '#244068'}
+          onFocus={e => e.target.style.borderColor = '#5cc8e0'}
+          onBlur={e => e.target.style.borderColor = '#163860'}
         />
       </div>
 
@@ -109,8 +109,8 @@ export default function EventForm({ event, onSaved, onCancel }) {
           onChange={set('location')}
           placeholder="Ej: IFEMA, Madrid"
           style={inputStyle}
-          onFocus={e => e.target.style.borderColor = '#d4af6a'}
-          onBlur={e => e.target.style.borderColor = '#244068'}
+          onFocus={e => e.target.style.borderColor = '#5cc8e0'}
+          onBlur={e => e.target.style.borderColor = '#163860'}
         />
       </div>
 
@@ -121,16 +121,16 @@ export default function EventForm({ event, onSaved, onCancel }) {
           style={{
             padding: '0.625rem 1.25rem',
             background: 'transparent',
-            border: '1px solid #244068',
+            border: '1px solid #163860',
             borderRadius: '8px',
-            color: '#8892a4',
+            color: '#6aa0bc',
             cursor: 'pointer',
             fontSize: '0.9rem',
             fontWeight: 500,
             transition: 'all 0.2s',
           }}
-          onMouseEnter={e => { e.currentTarget.style.borderColor = '#5c6880'; e.currentTarget.style.color = '#f0f6ff' }}
-          onMouseLeave={e => { e.currentTarget.style.borderColor = '#244068'; e.currentTarget.style.color = '#8892a4' }}
+          onMouseEnter={e => { e.currentTarget.style.borderColor = '#3d7090'; e.currentTarget.style.color = '#e8f4ff' }}
+          onMouseLeave={e => { e.currentTarget.style.borderColor = '#163860'; e.currentTarget.style.color = '#6aa0bc' }}
         >
           Cancelar
         </button>
@@ -139,10 +139,10 @@ export default function EventForm({ event, onSaved, onCancel }) {
           disabled={saving}
           style={{
             padding: '0.625rem 1.5rem',
-            background: saving ? '#1a304f' : 'linear-gradient(135deg, #d4af6a, #c9a05a)',
+            background: saving ? '#0d2540' : 'linear-gradient(135deg, #5cc8e0, #3aacc4)',
             border: 'none',
             borderRadius: '8px',
-            color: saving ? '#5c6880' : '#040d1a',
+            color: saving ? '#3d7090' : '#030810',
             cursor: saving ? 'not-allowed' : 'pointer',
             fontWeight: 600,
             fontSize: '0.9rem',

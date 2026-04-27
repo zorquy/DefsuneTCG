@@ -10,12 +10,12 @@ export default function Admin() {
       <div style={{
         minHeight: '100vh',
         display: 'flex', alignItems: 'center', justifyContent: 'center',
-        background: '#0a1628',
+        background: '#060c1a',
       }}>
         <div style={{
           width: 32, height: 32,
-          border: '2px solid #244068',
-          borderTopColor: '#d4af6a',
+          border: '2px solid #163860',
+          borderTopColor: '#5cc8e0',
           borderRadius: '50%',
           animation: 'spin 0.8s linear infinite',
         }} />

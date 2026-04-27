@@ -1,22 +1,22 @@
 @import "tailwindcss";
 
 @theme {
-  --color-navy-950: #040d1a;
-  --color-navy-900: #0a1628;
-  --color-navy-800: #112035;
-  --color-navy-700: #1a304f;
-  --color-navy-600: #244068;
+  --color-navy-950: #030810;
+  --color-navy-900: #060c1a;
+  --color-navy-800: #091628;
+  --color-navy-700: #0d2540;
+  --color-navy-600: #163860;
   --color-navy-500: #2e5282;
-  --color-ice-50:   #f0f6ff;
+  --color-ice-50:   #e8f4ff;
   --color-ice-100:  #e2edff;
   --color-ice-200:  #c4daff;
-  --color-silver-300: #c0cad8;
-  --color-silver-400: #8892a4;
-  --color-silver-500: #5c6880;
-  --color-gold-400: #d4af6a;
-  --color-gold-300: #e8c97e;
+  --color-silver-300: #90c0dc;
+  --color-silver-400: #6aa0bc;
+  --color-silver-500: #3d7090;
+  --color-gold-400: #5cc8e0;
+  --color-gold-300: #7dd8ef;
 
-  --font-display: "Cormorant Garamond", Georgia, serif;
+  --font-display: "Cinzel", Georgia, serif;
   --font-body: "Inter", system-ui, sans-serif;
 }
 
@@ -31,8 +31,8 @@ html {
 body {
   margin: 0;
   font-family: var(--font-body);
-  background-color: #0a1628;
-  color: #f0f6ff;
+  background-color: #060c1a;
+  color: #e8f4ff;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
@@ -42,11 +42,11 @@ body {
 }
 
 ::-webkit-scrollbar { width: 6px; }
-::-webkit-scrollbar-track { background: #040d1a; }
-::-webkit-scrollbar-thumb { background: #244068; border-radius: 3px; }
-::-webkit-scrollbar-thumb:hover { background: #8892a4; }
+::-webkit-scrollbar-track { background: #030810; }
+::-webkit-scrollbar-thumb { background: #163860; border-radius: 3px; }
+::-webkit-scrollbar-thumb:hover { background: #6aa0bc; }
 
-::selection { background: #244068; color: #f0f6ff; }
+::selection { background: #163860; color: #e8f4ff; }
 
 @keyframes fadeInUp {
   from { opacity: 0; transform: translateY(24px); }
@@ -69,7 +69,7 @@ body {
 .animate-delay-500 { animation-delay: 0.5s; }
 
 .skeleton {
-  background: linear-gradient(90deg, #112035 25%, #1a304f 50%, #112035 75%);
+  background: linear-gradient(90deg, #091628 25%, #0d2540 50%, #091628 75%);
   background-size: 200% 100%;
   animation: shimmer 1.5s infinite;
   border-radius: 8px;

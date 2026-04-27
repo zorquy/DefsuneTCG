@@ -10,11 +10,11 @@ export default function Home() {
     <>
       <Hero />
 
-      <div style={{ height: 1, background: 'linear-gradient(90deg, transparent, #244068, transparent)' }} />
+      <div style={{ height: 1, background: 'linear-gradient(90deg, transparent, #163860, transparent)' }} />
 
       <BuySection />
 
-      <div style={{ height: 1, background: 'linear-gradient(90deg, transparent, #1a304f, transparent)' }} />
+      <div style={{ height: 1, background: 'linear-gradient(90deg, transparent, #0d2540, transparent)' }} />
 
       <ProductGrid
         id="singles"
@@ -24,7 +24,7 @@ export default function Home() {
         category="singles"
       />
 
-      <div style={{ height: 1, background: 'linear-gradient(90deg, transparent, #1a304f, transparent)' }} />
+      <div style={{ height: 1, background: 'linear-gradient(90deg, transparent, #0d2540, transparent)' }} />
 
       <ProductGrid
         id="gradeadas-pcg"
@@ -34,7 +34,7 @@ export default function Home() {
         category="gradeadas_pcg"
       />
 
-      <div style={{ height: 1, background: 'linear-gradient(90deg, transparent, #1a304f, transparent)' }} />
+      <div style={{ height: 1, background: 'linear-gradient(90deg, transparent, #0d2540, transparent)' }} />
 
       <ProductGrid
         id="gradeadas-psa"
@@ -44,7 +44,7 @@ export default function Home() {
         category="gradeadas_psa"
       />
 
-      <div style={{ height: 1, background: 'linear-gradient(90deg, transparent, #1a304f, transparent)' }} />
+      <div style={{ height: 1, background: 'linear-gradient(90deg, transparent, #0d2540, transparent)' }} />
 
       <ProductGrid
         id="packs"
@@ -54,11 +54,11 @@ export default function Home() {
         category="packs"
       />
 
-      <div style={{ height: 1, background: 'linear-gradient(90deg, transparent, #1a304f, transparent)' }} />
+      <div style={{ height: 1, background: 'linear-gradient(90deg, transparent, #0d2540, transparent)' }} />
 
       <EventsSection />
 
-      <div style={{ height: 1, background: 'linear-gradient(90deg, transparent, #244068, transparent)' }} />
+      <div style={{ height: 1, background: 'linear-gradient(90deg, transparent, #163860, transparent)' }} />
 
       <ContactSection />
 

@@ -38,10 +38,10 @@ export default function ProductGrid({ id, title, subtitle, accent, category }) {
               style={{
                 display: 'inline-flex', alignItems: 'center', gap: '0.375rem',
                 padding: '0.5rem 0.875rem',
-                border: '1px solid #244068',
+                border: '1px solid #163860',
                 borderRadius: '8px',
-                background: 'rgba(17,32,53,0.6)',
-                color: '#8892a4',
+                background: 'rgba(9,22,40,0.6)',
+                color: '#6aa0bc',
                 fontSize: '0.8125rem',
                 fontWeight: 500,
                 cursor: 'pointer',
@@ -50,8 +50,8 @@ export default function ProductGrid({ id, title, subtitle, accent, category }) {
                 flexShrink: 0,
                 marginBottom: '1.25rem',
               }}
-              onMouseEnter={e => { e.currentTarget.style.color = '#f0f6ff'; e.currentTarget.style.borderColor = '#d4af6a' }}
-              onMouseLeave={e => { e.currentTarget.style.color = '#8892a4'; e.currentTarget.style.borderColor = '#244068' }}
+              onMouseEnter={e => { e.currentTarget.style.color = '#e8f4ff'; e.currentTarget.style.borderColor = '#5cc8e0' }}
+              onMouseLeave={e => { e.currentTarget.style.color = '#6aa0bc'; e.currentTarget.style.borderColor = '#163860' }}
             >
               <svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" strokeWidth="1.5">
                 <path d="M3 2v10M3 12l-2-2M3 12l2-2M11 2v10M11 2l-2 2M11 2l2 2"/>
@@ -78,10 +78,10 @@ export default function ProductGrid({ id, title, subtitle, accent, category }) {
         {!loading && !hasProducts && (
           <div style={{
             textAlign: 'center', padding: '4rem 1rem',
-            border: '1px dashed #244068', borderRadius: '12px',
-            color: '#5c6880',
+            border: '1px dashed #163860', borderRadius: '12px',
+            color: '#3d7090',
           }}>
-            <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1" style={{ margin: '0 auto 1rem', display: 'block', color: '#244068' }}>
+            <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1" style={{ margin: '0 auto 1rem', display: 'block', color: '#163860' }}>
               <rect x="3" y="3" width="18" height="18" rx="2"/>
               <circle cx="8.5" cy="8.5" r="1.5"/>
               <path d="m21 15-5-5L5 21"/>

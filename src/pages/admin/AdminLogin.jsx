@@ -24,7 +24,7 @@ export default function AdminLogin() {
       minHeight: '100vh',
       display: 'flex', alignItems: 'center', justifyContent: 'center',
       padding: '1.5rem',
-      background: '#0a1628',
+      background: '#060c1a',
     }}>
       <div style={{ width: '100%', maxWidth: 400 }}>
         {/* Logo */}
@@ -35,12 +35,12 @@ export default function AdminLogin() {
             fontWeight: 600,
             letterSpacing: '0.1em',
             textTransform: 'uppercase',
-            color: '#f0f6ff',
+            color: '#e8f4ff',
             margin: '0 0 0.5rem',
           }}>
-            Defsune<span style={{ color: '#d4af6a' }}>TCG</span>
+            Defsune<span style={{ color: '#5cc8e0' }}>TCG</span>
           </p>
-          <p style={{ color: '#5c6880', fontSize: '0.875rem', margin: 0 }}>
+          <p style={{ color: '#3d7090', fontSize: '0.875rem', margin: 0 }}>
             Panel de administración
           </p>
         </div>
@@ -48,8 +48,8 @@ export default function AdminLogin() {
         <form
           onSubmit={handleSubmit}
           style={{
-            background: '#112035',
-            border: '1px solid #244068',
+            background: '#091628',
+            border: '1px solid #163860',
             borderRadius: '16px',
             padding: '2rem',
           }}
@@ -58,7 +58,7 @@ export default function AdminLogin() {
             fontFamily: 'var(--font-display)',
             fontSize: '1.375rem',
             fontWeight: 500,
-            color: '#f0f6ff',
+            color: '#e8f4ff',
             margin: '0 0 1.5rem',
           }}>
             Acceder
@@ -83,7 +83,7 @@ export default function AdminLogin() {
               display: 'block',
               fontSize: '0.8125rem',
               fontWeight: 500,
-              color: '#8892a4',
+              color: '#6aa0bc',
               marginBottom: '0.375rem',
               letterSpacing: '0.04em',
             }}>
@@ -98,17 +98,17 @@ export default function AdminLogin() {
               style={{
                 width: '100%',
                 padding: '0.625rem 0.875rem',
-                background: '#0a1628',
-                border: '1px solid #244068',
+                background: '#060c1a',
+                border: '1px solid #163860',
                 borderRadius: '8px',
-                color: '#f0f6ff',
+                color: '#e8f4ff',
                 fontSize: '0.9375rem',
                 outline: 'none',
                 transition: 'border-color 0.2s',
                 boxSizing: 'border-box',
               }}
-              onFocus={e => e.target.style.borderColor = '#d4af6a'}
-              onBlur={e => e.target.style.borderColor = '#244068'}
+              onFocus={e => e.target.style.borderColor = '#5cc8e0'}
+              onBlur={e => e.target.style.borderColor = '#163860'}
             />
           </div>
 
@@ -117,7 +117,7 @@ export default function AdminLogin() {
               display: 'block',
               fontSize: '0.8125rem',
               fontWeight: 500,
-              color: '#8892a4',
+              color: '#6aa0bc',
               marginBottom: '0.375rem',
               letterSpacing: '0.04em',
             }}>
@@ -132,17 +132,17 @@ export default function AdminLogin() {
               style={{
                 width: '100%',
                 padding: '0.625rem 0.875rem',
-                background: '#0a1628',
-                border: '1px solid #244068',
+                background: '#060c1a',
+                border: '1px solid #163860',
                 borderRadius: '8px',
-                color: '#f0f6ff',
+                color: '#e8f4ff',
                 fontSize: '0.9375rem',
                 outline: 'none',
                 transition: 'border-color 0.2s',
                 boxSizing: 'border-box',
               }}
-              onFocus={e => e.target.style.borderColor = '#d4af6a'}
-              onBlur={e => e.target.style.borderColor = '#244068'}
+              onFocus={e => e.target.style.borderColor = '#5cc8e0'}
+              onBlur={e => e.target.style.borderColor = '#163860'}
             />
           </div>
 
@@ -152,10 +152,10 @@ export default function AdminLogin() {
             style={{
               width: '100%',
               padding: '0.75rem',
-              background: loading ? '#1a304f' : 'linear-gradient(135deg, #d4af6a, #c9a05a)',
+              background: loading ? '#0d2540' : 'linear-gradient(135deg, #5cc8e0, #3aacc4)',
               border: 'none',
               borderRadius: '8px',
-              color: loading ? '#5c6880' : '#040d1a',
+              color: loading ? '#3d7090' : '#030810',
               fontWeight: 600,
               fontSize: '0.9375rem',
               cursor: loading ? 'not-allowed' : 'pointer',

@@ -16,8 +16,8 @@ export default function ProductCard({ product }) {
 
   return (
     <article style={{
-      background: '#112035',
-      border: '1px solid #1a304f',
+      background: '#091628',
+      border: '1px solid #0d2540',
       borderRadius: '12px',
       overflow: 'hidden',
       transition: 'transform 0.25s, box-shadow 0.25s, border-color 0.25s',
@@ -27,19 +27,19 @@ export default function ProductCard({ product }) {
     }}
       onMouseEnter={e => {
         e.currentTarget.style.transform = 'translateY(-4px)'
-        e.currentTarget.style.boxShadow = '0 16px 40px rgba(0,0,0,0.4), 0 0 0 1px rgba(212,175,106,0.15)'
-        e.currentTarget.style.borderColor = 'rgba(212,175,106,0.2)'
+        e.currentTarget.style.boxShadow = '0 16px 40px rgba(0,0,0,0.4), 0 0 0 1px rgba(92,200,224,0.15)'
+        e.currentTarget.style.borderColor = 'rgba(92,200,224,0.2)'
       }}
       onMouseLeave={e => {
         e.currentTarget.style.transform = 'translateY(0)'
         e.currentTarget.style.boxShadow = 'none'
-        e.currentTarget.style.borderColor = '#1a304f'
+        e.currentTarget.style.borderColor = '#0d2540'
       }}
     >
       {/* Image */}
       <div style={{
         aspectRatio: '3/4',
-        background: '#0a1628',
+        background: '#060c1a',
         overflow: 'hidden',
         position: 'relative',
       }}>
@@ -66,7 +66,7 @@ export default function ProductCard({ product }) {
             position: 'absolute', inset: 0,
             display: 'flex', flexDirection: 'column',
             alignItems: 'center', justifyContent: 'center',
-            color: '#244068',
+            color: '#163860',
             gap: '0.5rem',
           }}>
             <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1">
@@ -103,7 +103,7 @@ export default function ProductCard({ product }) {
           fontFamily: 'var(--font-display)',
           fontSize: '1rem',
           fontWeight: 500,
-          color: '#f0f6ff',
+          color: '#e8f4ff',
           margin: 0,
           lineHeight: 1.3,
           flex: 1,
@@ -114,7 +114,7 @@ export default function ProductCard({ product }) {
         {product.description && (
           <p style={{
             fontSize: '0.8125rem',
-            color: '#5c6880',
+            color: '#3d7090',
             margin: '0.25rem 0 0',
             lineHeight: 1.5,
             display: '-webkit-box',
@@ -129,7 +129,7 @@ export default function ProductCard({ product }) {
         <p style={{
           fontSize: '1.0625rem',
           fontWeight: 600,
-          color: '#d4af6a',
+          color: '#5cc8e0',
           margin: '0.625rem 0 0',
           letterSpacing: '0.01em',
         }}>

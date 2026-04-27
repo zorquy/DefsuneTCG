@@ -30,7 +30,7 @@ const LINKS = [
     handle: 'Defsunetcg@gmail.com',
     href: 'mailto:Defsunetcg@gmail.com',
     desc: 'Para consultas formales',
-    color: '#d4af6a',
+    color: '#5cc8e0',
     icon: (
       <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
         <rect x="2" y="4" width="20" height="16" rx="2"/>
@@ -44,7 +44,7 @@ export default function ContactSection() {
   return (
     <section id="contacto" style={{
       padding: '5rem 0 6rem',
-      background: 'linear-gradient(180deg, transparent, rgba(4,13,26,0.6))',
+      background: 'linear-gradient(180deg, transparent, rgba(3,8,16,0.6))',
     }}>
       <div style={{
         maxWidth: '1280px', margin: '0 auto', padding: '0 1.5rem',
@@ -54,11 +54,11 @@ export default function ContactSection() {
           display: 'inline-block',
           fontSize: '0.6875rem', fontWeight: 600,
           letterSpacing: '0.15em', textTransform: 'uppercase',
-          color: '#d4af6a', marginBottom: '1rem',
+          color: '#5cc8e0', marginBottom: '1rem',
           padding: '0.25rem 0.75rem',
-          border: '1px solid rgba(212,175,106,0.3)',
+          border: '1px solid rgba(92,200,224,0.3)',
           borderRadius: '999px',
-          background: 'rgba(212,175,106,0.06)',
+          background: 'rgba(92,200,224,0.06)',
         }}>
           Contacto
         </span>
@@ -66,14 +66,14 @@ export default function ContactSection() {
           fontFamily: 'var(--font-display)',
           fontSize: 'clamp(2rem, 5vw, 3rem)',
           fontWeight: 500,
-          color: '#f0f6ff',
+          color: '#e8f4ff',
           margin: '0 0 0.75rem',
           lineHeight: 1.1,
         }}>
           ¿Hablamos?
         </h2>
         <p style={{
-          color: '#8892a4', fontSize: '0.9375rem',
+          color: '#6aa0bc', fontSize: '0.9375rem',
           maxWidth: '420px', lineHeight: 1.7,
           margin: '0 auto 3rem',
         }}>
@@ -93,23 +93,23 @@ export default function ContactSection() {
               style={{
                 display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '0.75rem',
                 padding: '1.75rem 2rem',
-                background: '#112035',
-                border: '1px solid #1a304f',
+                background: '#091628',
+                border: '1px solid #0d2540',
                 borderRadius: '16px',
-                color: '#c0cad8',
+                color: '#90c0dc',
                 textDecoration: 'none',
                 minWidth: 180,
                 transition: 'all 0.25s',
               }}
               onMouseEnter={e => {
                 e.currentTarget.style.borderColor = link.color
-                e.currentTarget.style.color = '#f0f6ff'
+                e.currentTarget.style.color = '#e8f4ff'
                 e.currentTarget.style.transform = 'translateY(-4px)'
                 e.currentTarget.style.boxShadow = `0 12px 32px rgba(0,0,0,0.3), 0 0 0 1px ${link.color}40`
               }}
               onMouseLeave={e => {
-                e.currentTarget.style.borderColor = '#1a304f'
-                e.currentTarget.style.color = '#c0cad8'
+                e.currentTarget.style.borderColor = '#0d2540'
+                e.currentTarget.style.color = '#90c0dc'
                 e.currentTarget.style.transform = 'translateY(0)'
                 e.currentTarget.style.boxShadow = 'none'
               }}

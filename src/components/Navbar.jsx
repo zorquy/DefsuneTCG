@@ -33,9 +33,9 @@ export default function Navbar() {
       style={{
         position: 'fixed', top: 0, left: 0, right: 0, zIndex: 50,
         transition: 'background 0.3s, box-shadow 0.3s',
-        background: scrolled ? 'rgba(4,13,26,0.95)' : 'transparent',
+        background: scrolled ? 'rgba(3,8,16,0.95)' : 'transparent',
         backdropFilter: scrolled ? 'blur(16px)' : 'none',
-        boxShadow: scrolled ? '0 1px 0 rgba(36,64,104,0.5)' : 'none',
+        boxShadow: scrolled ? '0 1px 0 rgba(22,56,96,0.5)' : 'none',
       }}
     >
       <nav style={{
@@ -53,12 +53,12 @@ export default function Navbar() {
             fontSize: '1.35rem',
             fontWeight: 600,
             letterSpacing: '0.12em',
-            color: '#f0f6ff',
+            color: '#e8f4ff',
             textDecoration: 'none',
             textTransform: 'uppercase',
           }}
         >
-          Defsune<span style={{ color: '#d4af6a' }}>TCG</span>
+          Defsune<span style={{ color: '#5cc8e0' }}>TCG</span>
         </a>
 
         {/* Desktop nav */}
@@ -77,7 +77,7 @@ export default function Navbar() {
                 href={link.href}
                 onClick={e => handleNavClick(e, link.href)}
                 style={{
-                  color: '#c0cad8',
+                  color: '#90c0dc',
                   textDecoration: 'none',
                   fontSize: '0.8125rem',
                   fontWeight: 500,
@@ -88,11 +88,11 @@ export default function Navbar() {
                   display: 'block',
                 }}
                 onMouseEnter={e => {
-                  e.currentTarget.style.color = '#f0f6ff'
-                  e.currentTarget.style.background = 'rgba(36,64,104,0.5)'
+                  e.currentTarget.style.color = '#e8f4ff'
+                  e.currentTarget.style.background = 'rgba(22,56,96,0.5)'
                 }}
                 onMouseLeave={e => {
-                  e.currentTarget.style.color = '#c0cad8'
+                  e.currentTarget.style.color = '#90c0dc'
                   e.currentTarget.style.background = 'transparent'
                 }}
               >
@@ -109,7 +109,7 @@ export default function Navbar() {
           className="hamburger-btn"
           style={{
             background: 'none', border: 'none', cursor: 'pointer',
-            padding: '0.5rem', color: '#c0cad8',
+            padding: '0.5rem', color: '#90c0dc',
           }}
         >
           <svg width="22" height="22" viewBox="0 0 22 22" fill="none">
@@ -132,9 +132,9 @@ export default function Navbar() {
       {/* Mobile menu */}
       {menuOpen && (
         <div style={{
-          background: 'rgba(4,13,26,0.98)',
+          background: 'rgba(3,8,16,0.98)',
           backdropFilter: 'blur(16px)',
-          borderTop: '1px solid #244068',
+          borderTop: '1px solid #163860',
           padding: '1rem 1.5rem 1.5rem',
         }}>
           {NAV_LINKS.map(link => (
@@ -144,16 +144,16 @@ export default function Navbar() {
               onClick={e => handleNavClick(e, link.href)}
               style={{
                 display: 'block',
-                color: '#c0cad8',
+                color: '#90c0dc',
                 textDecoration: 'none',
                 fontSize: '0.9375rem',
                 fontWeight: 500,
                 padding: '0.75rem 0',
-                borderBottom: '1px solid #1a304f',
+                borderBottom: '1px solid #0d2540',
                 transition: 'color 0.2s',
               }}
-              onMouseEnter={e => e.currentTarget.style.color = '#f0f6ff'}
-              onMouseLeave={e => e.currentTarget.style.color = '#c0cad8'}
+              onMouseEnter={e => e.currentTarget.style.color = '#e8f4ff'}
+              onMouseLeave={e => e.currentTarget.style.color = '#90c0dc'}
             >
               {link.label}
             </a>

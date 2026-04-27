@@ -35,9 +35,9 @@ export default function EventsSection() {
       display: 'flex',
       gap: '1.25rem',
       padding: '1.25rem',
-      background: isPast ? 'rgba(17,32,53,0.4)' : '#112035',
+      background: isPast ? 'rgba(9,22,40,0.4)' : '#091628',
       border: '1px solid',
-      borderColor: isPast ? '#1a304f' : '#244068',
+      borderColor: isPast ? '#0d2540' : '#163860',
       borderRadius: '12px',
       alignItems: 'center',
       opacity: isPast ? 0.55 : 1,
@@ -53,16 +53,16 @@ export default function EventsSection() {
         flexShrink: 0,
       }}>
         <div style={{
-          background: isPast ? '#1a304f' : 'linear-gradient(135deg, #244068, #1a304f)',
+          background: isPast ? '#0d2540' : 'linear-gradient(135deg, #163860, #0d2540)',
           borderRadius: '10px',
           padding: '0.5rem',
-          border: isPast ? '1px solid #1a304f' : '1px solid rgba(212,175,106,0.2)',
+          border: isPast ? '1px solid #0d2540' : '1px solid rgba(92,200,224,0.2)',
         }}>
           <div style={{
             fontSize: '1.5rem',
             fontFamily: 'var(--font-display)',
             fontWeight: 600,
-            color: isPast ? '#5c6880' : '#d4af6a',
+            color: isPast ? '#3d7090' : '#5cc8e0',
             lineHeight: 1,
           }}>
             {new Date(event.date + 'T00:00:00').getDate()}
@@ -71,7 +71,7 @@ export default function EventsSection() {
             fontSize: '0.6875rem',
             textTransform: 'uppercase',
             letterSpacing: '0.06em',
-            color: isPast ? '#5c6880' : '#8892a4',
+            color: isPast ? '#3d7090' : '#6aa0bc',
             marginTop: '0.125rem',
           }}>
             {new Date(event.date + 'T00:00:00').toLocaleDateString('es-ES', { month: 'short' })}
@@ -84,19 +84,19 @@ export default function EventsSection() {
           fontFamily: 'var(--font-display)',
           fontSize: '1.0625rem',
           fontWeight: 500,
-          color: isPast ? '#5c6880' : '#f0f6ff',
+          color: isPast ? '#3d7090' : '#e8f4ff',
           margin: '0 0 0.25rem',
         }}>
           {event.name}
         </h3>
-        <div style={{ display: 'flex', alignItems: 'center', gap: '0.375rem', color: '#5c6880', fontSize: '0.8125rem' }}>
+        <div style={{ display: 'flex', alignItems: 'center', gap: '0.375rem', color: '#3d7090', fontSize: '0.8125rem' }}>
           <svg width="12" height="12" viewBox="0 0 14 14" fill="none" stroke="currentColor" strokeWidth="1.5">
             <path d="M7 1C4.79 1 3 2.79 3 5c0 3.25 4 8 4 8s4-4.75 4-8c0-2.21-1.79-4-4-4z"/>
             <circle cx="7" cy="5" r="1.5"/>
           </svg>
           {event.location}
         </div>
-        <div style={{ marginTop: '0.25rem', color: '#5c6880', fontSize: '0.75rem' }}>
+        <div style={{ marginTop: '0.25rem', color: '#3d7090', fontSize: '0.75rem' }}>
           {formatDate(event.date)}
         </div>
       </div>
@@ -140,8 +140,8 @@ export default function EventsSection() {
         {!loading && events.length === 0 && (
           <div style={{
             textAlign: 'center', padding: '3rem 1rem',
-            border: '1px dashed #244068', borderRadius: '12px',
-            color: '#5c6880',
+            border: '1px dashed #163860', borderRadius: '12px',
+            color: '#3d7090',
           }}>
             <p style={{ margin: 0 }}>No hay eventos programados próximamente.</p>
           </div>
@@ -155,7 +155,7 @@ export default function EventsSection() {
 
         {!loading && past.length > 0 && (
           <div style={{ marginTop: '2rem', maxWidth: '700px' }}>
-            <p style={{ fontSize: '0.75rem', textTransform: 'uppercase', letterSpacing: '0.1em', color: '#5c6880', marginBottom: '0.75rem' }}>
+            <p style={{ fontSize: '0.75rem', textTransform: 'uppercase', letterSpacing: '0.1em', color: '#3d7090', marginBottom: '0.75rem' }}>
               Eventos pasados
             </p>
             <div style={{ display: 'flex', flexDirection: 'column', gap: '0.75rem' }}>
