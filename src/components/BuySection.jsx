@@ -41,7 +41,7 @@ const CONTACT_ITEMS = [
 
 export default function BuySection() {
   return (
-    <section id="compra-venta" style={{
+    <section id="contacto" style={{
       padding: '5rem 0',
       background: 'linear-gradient(180deg, transparent, rgba(9,22,40,0.4), transparent)',
     }}>
