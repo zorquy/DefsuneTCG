@@ -64,7 +64,7 @@ export default function ProductGrid({ id, title, subtitle, accent, category }) {
         </div>
 
         {loading && (
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(180px, 1fr))', gap: '1rem' }}>
+          <div className="product-grid">
             {Array.from({ length: 8 }).map((_, i) => (
               <div key={i} style={{ borderRadius: '12px', overflow: 'hidden' }}>
                 <div className="skeleton" style={{ aspectRatio: '3/4' }} />
@@ -93,11 +93,7 @@ export default function ProductGrid({ id, title, subtitle, accent, category }) {
         )}
 
         {!loading && hasProducts && (
-          <div style={{
-            display: 'grid',
-            gridTemplateColumns: 'repeat(auto-fill, minmax(180px, 1fr))',
-            gap: '1rem',
-          }}>
+          <div className="product-grid">
             {products.map(product => (
               <ProductCard
                 key={product.id}
@@ -115,6 +111,26 @@ export default function ProductGrid({ id, title, subtitle, accent, category }) {
           onClose={() => setSelectedProduct(null)}
         />
       )}
+
+      <style>{`
+        .product-grid {
+          display: grid;
+          grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+          gap: 1rem;
+        }
+        @media (max-width: 640px) {
+          .product-grid {
+            grid-template-columns: repeat(3, 1fr);
+            gap: 0.5rem;
+          }
+        }
+        @media (max-width: 380px) {
+          .product-grid {
+            grid-template-columns: repeat(2, 1fr);
+            gap: 0.5rem;
+          }
+        }
+      `}</style>
     </section>
   )
 }

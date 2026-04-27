@@ -75,3 +75,10 @@ body {
   animation: shimmer 1.5s infinite;
   border-radius: 8px;
 }
+
+@media (max-width: 640px) {
+  .product-card-info  { padding: 0.5rem 0.625rem !important; gap: 0.125rem !important; }
+  .product-card-name  { font-size: 0.75rem !important; }
+  .product-card-price { margin-top: 0.3rem !important; }
+  .product-card-price > p { font-size: 0.875rem !important; }
+}

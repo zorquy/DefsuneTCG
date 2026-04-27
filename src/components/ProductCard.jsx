@@ -131,8 +131,8 @@ export default function ProductCard({ product, onClick }) {
       </div>
 
       {/* Info */}
-      <div style={{ padding: '0.875rem 1rem', flex: 1, display: 'flex', flexDirection: 'column', gap: '0.25rem' }}>
-        <h3 style={{
+      <div className="product-card-info" style={{ padding: '0.875rem 1rem', flex: 1, display: 'flex', flexDirection: 'column', gap: '0.25rem' }}>
+        <h3 className="product-card-name" style={{
           fontFamily: 'var(--font-display)',
           fontSize: '1rem',
           fontWeight: 500,
@@ -159,7 +159,7 @@ export default function ProductCard({ product, onClick }) {
           </p>
         )}
 
-        <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginTop: '0.625rem' }}>
+        <div className="product-card-price" style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginTop: '0.625rem' }}>
           <p style={{
             fontSize: '1.0625rem',
             fontWeight: 600,
@@ -194,3 +194,4 @@ export default function ProductCard({ product, onClick }) {
     </article>
   )
 }
+
