@@ -112,25 +112,6 @@ export default function ProductGrid({ id, title, subtitle, accent, category }) {
         />
       )}
 
-      <style>{`
-        .product-grid {
-          display: grid;
-          grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
-          gap: 1rem;
-        }
-        @media (max-width: 640px) {
-          .product-grid {
-            grid-template-columns: repeat(3, 1fr);
-            gap: 0.5rem;
-          }
-        }
-        @media (max-width: 380px) {
-          .product-grid {
-            grid-template-columns: repeat(2, 1fr);
-            gap: 0.5rem;
-          }
-        }
-      `}</style>
     </section>
   )
 }

@@ -1,18 +1,16 @@
 import { useState, useEffect } from 'react'
-import { Link, useLocation, useNavigate } from 'react-router-dom'
+import { Link, useLocation } from 'react-router-dom'
 
 const NAV_LINKS = [
-  { label: 'Inicio',    to: '/' },
-  { label: 'Catálogo',  to: '/catalogo' },
-  { label: 'Eventos',   to: '/eventos' },
-  { label: 'Contacto',  to: 'contacto' },
+  { label: 'Inicio',   to: '/' },
+  { label: 'Catálogo', to: '/catalogo' },
+  { label: 'Eventos',  to: '/eventos' },
 ]
 
 export default function Navbar() {
-  const [scrolled, setScrolled]   = useState(false)
-  const [menuOpen, setMenuOpen]   = useState(false)
-  const location  = useLocation()
-  const navigate  = useNavigate()
+  const [scrolled, setScrolled] = useState(false)
+  const [menuOpen, setMenuOpen] = useState(false)
+  const location = useLocation()
 
   useEffect(() => {
     const handleScroll = () => setScrolled(window.scrollY > 40)
@@ -20,26 +18,10 @@ export default function Navbar() {
     return () => window.removeEventListener('scroll', handleScroll)
   }, [])
 
-  // Close mobile menu on route change
   useEffect(() => { setMenuOpen(false) }, [location.pathname])
 
-  const handleContactClick = (e) => {
-    e.preventDefault()
-    setMenuOpen(false)
-    if (location.pathname === '/') {
-      document.getElementById('contacto')?.scrollIntoView({ behavior: 'smooth' })
-    } else {
-      navigate('/')
-      setTimeout(() => {
-        document.getElementById('contacto')?.scrollIntoView({ behavior: 'smooth' })
-      }, 300)
-    }
-  }
-
-  const isActive = (to) => {
-    if (to === '/') return location.pathname === '/'
-    return location.pathname.startsWith(to)
-  }
+  const isActive = (to) =>
+    to === '/' ? location.pathname === '/' : location.pathname.startsWith(to)
 
   const linkStyle = (active) => ({
     color: active ? '#5cc8e0' : '#90c0dc',
@@ -64,60 +46,31 @@ export default function Navbar() {
       boxShadow: scrolled ? '0 1px 0 rgba(22,56,96,0.5)' : 'none',
     }}>
       <nav style={{
-        maxWidth: '1280px', margin: '0 auto',
-        padding: '0 1.5rem',
-        height: '64px',
-        display: 'flex', alignItems: 'center', justifyContent: 'space-between',
+        maxWidth: '1280px', margin: '0 auto', padding: '0 1.5rem',
+        height: '64px', display: 'flex', alignItems: 'center', justifyContent: 'space-between',
       }}>
-        {/* Logo */}
         <Link to="/" style={{ display: 'flex', alignItems: 'center', gap: '0.625rem', textDecoration: 'none' }}>
-          <img
-            src="/logo.png"
-            alt="DefsuneTCG"
-            style={{ width: 36, height: 36, borderRadius: '50%', objectFit: 'cover' }}
-          />
-          <span style={{
-            fontFamily: 'var(--font-display)',
-            fontSize: '1.2rem', fontWeight: 600,
-            letterSpacing: '0.1em', textTransform: 'uppercase',
-            color: '#e8f4ff',
-          }}>
+          <img src="/logo.png" alt="DefsuneTCG" style={{ width: 36, height: 36, borderRadius: '50%', objectFit: 'cover' }} />
+          <span style={{ fontFamily: 'var(--font-display)', fontSize: '1.2rem', fontWeight: 600, letterSpacing: '0.1em', textTransform: 'uppercase', color: '#e8f4ff' }}>
             Defsune<span style={{ color: '#5cc8e0' }}>TCG</span>
           </span>
         </Link>
 
-        {/* Desktop nav */}
-        <ul className="desktop-nav" style={{
-          display: 'none', gap: '0.25rem',
-          listStyle: 'none', margin: 0, padding: 0,
-        }}>
+        <ul className="desktop-nav" style={{ display: 'none', gap: '0.25rem', listStyle: 'none', margin: 0, padding: 0 }}>
           {NAV_LINKS.map(link => (
             <li key={link.to}>
-              {link.to === 'contacto' ? (
-                <a
-                  href="#contacto"
-                  onClick={handleContactClick}
-                  style={linkStyle(false)}
-                  onMouseEnter={e => { e.currentTarget.style.color = '#e8f4ff'; e.currentTarget.style.background = 'rgba(22,56,96,0.5)' }}
-                  onMouseLeave={e => { e.currentTarget.style.color = '#90c0dc'; e.currentTarget.style.background = 'transparent' }}
-                >
-                  {link.label}
-                </a>
-              ) : (
-                <Link
-                  to={link.to}
-                  style={linkStyle(isActive(link.to))}
-                  onMouseEnter={e => { if (!isActive(link.to)) { e.currentTarget.style.color = '#e8f4ff'; e.currentTarget.style.background = 'rgba(22,56,96,0.5)' } }}
-                  onMouseLeave={e => { if (!isActive(link.to)) { e.currentTarget.style.color = '#90c0dc'; e.currentTarget.style.background = 'transparent' } }}
-                >
-                  {link.label}
-                </Link>
-              )}
+              <Link
+                to={link.to}
+                style={linkStyle(isActive(link.to))}
+                onMouseEnter={e => { if (!isActive(link.to)) { e.currentTarget.style.color = '#e8f4ff'; e.currentTarget.style.background = 'rgba(22,56,96,0.5)' } }}
+                onMouseLeave={e => { if (!isActive(link.to)) { e.currentTarget.style.color = '#90c0dc'; e.currentTarget.style.background = 'transparent' } }}
+              >
+                {link.label}
+              </Link>
             </li>
           ))}
         </ul>
 
-        {/* Hamburger */}
         <button
           onClick={() => setMenuOpen(v => !v)}
           aria-label="Abrir menú"
@@ -141,43 +94,26 @@ export default function Navbar() {
         </button>
       </nav>
 
-      {/* Mobile menu */}
       {menuOpen && (
         <div style={{
           background: 'rgba(3,8,16,0.98)',
-          backdropFilter: 'blur(16px)',
-          WebkitBackdropFilter: 'blur(16px)',
+          backdropFilter: 'blur(16px)', WebkitBackdropFilter: 'blur(16px)',
           borderTop: '1px solid #163860',
           padding: '0.5rem 1.5rem 1.25rem',
         }}>
           {NAV_LINKS.map(link => (
-            link.to === 'contacto' ? (
-              <a
-                key="contacto"
-                href="#contacto"
-                onClick={handleContactClick}
-                style={{
-                  display: 'block', color: '#90c0dc', textDecoration: 'none',
-                  fontSize: '0.9375rem', fontWeight: 500,
-                  padding: '0.75rem 0', borderBottom: '1px solid #0d2540',
-                }}
-              >
-                {link.label}
-              </a>
-            ) : (
-              <Link
-                key={link.to}
-                to={link.to}
-                style={{
-                  display: 'block', textDecoration: 'none',
-                  fontSize: '0.9375rem', fontWeight: 500,
-                  padding: '0.75rem 0', borderBottom: '1px solid #0d2540',
-                  color: isActive(link.to) ? '#5cc8e0' : '#90c0dc',
-                }}
-              >
-                {link.label}
-              </Link>
-            )
+            <Link
+              key={link.to}
+              to={link.to}
+              style={{
+                display: 'block', textDecoration: 'none',
+                fontSize: '0.9375rem', fontWeight: 500,
+                padding: '0.75rem 0', borderBottom: '1px solid #0d2540',
+                color: isActive(link.to) ? '#5cc8e0' : '#90c0dc',
+              }}
+            >
+              {link.label}
+            </Link>
           ))}
         </div>
       )}
