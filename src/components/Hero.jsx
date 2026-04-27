@@ -38,7 +38,7 @@ export default function Hero() {
     <section
       id="inicio"
       style={{
-        minHeight: '100vh',
+        minHeight: '100svh',
         display: 'flex',
         flexDirection: 'column',
         alignItems: 'center',
@@ -70,21 +70,21 @@ export default function Hero() {
       <div
         className="animate-fade-in-up"
         style={{
-          width: 88, height: 88,
-          borderRadius: '50%',
-          background: 'radial-gradient(circle at 35% 35%, #163860, #0a1e38)',
-          border: '1px solid rgba(92,200,224,0.35)',
-          display: 'flex', alignItems: 'center', justifyContent: 'center',
           marginBottom: '2rem',
-          boxShadow: '0 0 40px rgba(92,200,224,0.2), 0 0 80px rgba(92,200,224,0.06), inset 0 1px 0 rgba(92,200,224,0.1)',
           position: 'relative',
+          filter: 'drop-shadow(0 0 32px rgba(92,200,224,0.3))',
         }}
       >
-        <svg width="36" height="36" viewBox="0 0 36 36" fill="none">
-          <path d="M6 8h24a2 2 0 012 2v16a2 2 0 01-2 2H6a2 2 0 01-2-2V10a2 2 0 012-2z" stroke="#5cc8e0" strokeWidth="1.5"/>
-          <circle cx="18" cy="18" r="5" stroke="#5cc8e0" strokeWidth="1.5"/>
-          <circle cx="18" cy="18" r="2" fill="#5cc8e0"/>
-        </svg>
+        <img
+          src="/logo.png"
+          alt="DefsuneTCG"
+          style={{
+            width: 140, height: 140,
+            borderRadius: '50%',
+            objectFit: 'cover',
+            display: 'block',
+          }}
+        />
       </div>
 
       {/* Title */}
@@ -155,6 +155,7 @@ export default function Hero() {
               fontWeight: 500,
               background: 'rgba(9,22,40,0.6)',
               backdropFilter: 'blur(8px)',
+              WebkitBackdropFilter: 'blur(8px)',
               transition: 'all 0.25s',
               letterSpacing: '0.02em',
             }}

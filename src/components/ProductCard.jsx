@@ -83,6 +83,7 @@ export default function ProductCard({ product, onClick }) {
           opacity: hovered ? 1 : 0,
           transition: 'opacity 0.25s',
           backdropFilter: hovered ? 'blur(2px)' : 'none',
+          WebkitBackdropFilter: hovered ? 'blur(2px)' : 'none',
         }}>
           <div style={{
             display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '0.5rem',
@@ -122,6 +123,7 @@ export default function ProductCard({ product, onClick }) {
             fontWeight: 700,
             letterSpacing: '0.08em',
             backdropFilter: 'blur(4px)',
+            WebkitBackdropFilter: 'blur(4px)',
           }}>
             {badge}
           </div>

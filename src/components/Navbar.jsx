@@ -35,6 +35,7 @@ export default function Navbar() {
         transition: 'background 0.3s, box-shadow 0.3s',
         background: scrolled ? 'rgba(3,8,16,0.95)' : 'transparent',
         backdropFilter: scrolled ? 'blur(16px)' : 'none',
+        WebkitBackdropFilter: scrolled ? 'blur(16px)' : 'none',
         boxShadow: scrolled ? '0 1px 0 rgba(22,56,96,0.5)' : 'none',
       }}
     >
@@ -49,16 +50,25 @@ export default function Navbar() {
           href="#inicio"
           onClick={e => handleNavClick(e, '#inicio')}
           style={{
-            fontFamily: 'var(--font-display)',
-            fontSize: '1.35rem',
-            fontWeight: 600,
-            letterSpacing: '0.12em',
-            color: '#e8f4ff',
+            display: 'flex', alignItems: 'center', gap: '0.625rem',
             textDecoration: 'none',
-            textTransform: 'uppercase',
           }}
         >
-          Defsune<span style={{ color: '#5cc8e0' }}>TCG</span>
+          <img
+            src="/logo.png"
+            alt="DefsuneTCG"
+            style={{ width: 36, height: 36, borderRadius: '50%', objectFit: 'cover' }}
+          />
+          <span style={{
+            fontFamily: 'var(--font-display)',
+            fontSize: '1.2rem',
+            fontWeight: 600,
+            letterSpacing: '0.1em',
+            color: '#e8f4ff',
+            textTransform: 'uppercase',
+          }}>
+            Defsune<span style={{ color: '#5cc8e0' }}>TCG</span>
+          </span>
         </a>
 
         {/* Desktop nav */}
@@ -134,6 +144,7 @@ export default function Navbar() {
         <div style={{
           background: 'rgba(3,8,16,0.98)',
           backdropFilter: 'blur(16px)',
+          WebkitBackdropFilter: 'blur(16px)',
           borderTop: '1px solid #163860',
           padding: '1rem 1.5rem 1.5rem',
         }}>

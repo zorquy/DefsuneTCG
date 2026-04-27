@@ -67,6 +67,7 @@ export default function ProductModal({ product, onClose }) {
         position: 'fixed', inset: 0, zIndex: 200,
         background: 'rgba(3,8,16,0.92)',
         backdropFilter: 'blur(14px)',
+        WebkitBackdropFilter: 'blur(14px)',
         display: 'flex', alignItems: 'center', justifyContent: 'center',
         padding: '1rem',
         overflowY: 'auto',
@@ -95,6 +96,7 @@ export default function ProductModal({ product, onClose }) {
             display: 'flex', alignItems: 'center', justifyContent: 'center',
             color: '#6aa0bc', cursor: 'pointer',
             backdropFilter: 'blur(8px)',
+            WebkitBackdropFilter: 'blur(8px)',
             transition: 'all 0.2s',
           }}
           onMouseEnter={e => { e.currentTarget.style.borderColor = '#5cc8e0'; e.currentTarget.style.color = '#e8f4ff' }}
@@ -159,6 +161,7 @@ export default function ProductModal({ product, onClose }) {
               fontSize: '0.75rem', fontWeight: 700,
               letterSpacing: '0.08em',
               backdropFilter: 'blur(6px)',
+              WebkitBackdropFilter: 'blur(6px)',
             }}>
               {badge}
             </div>
