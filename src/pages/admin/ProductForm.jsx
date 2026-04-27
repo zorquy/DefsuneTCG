@@ -42,6 +42,8 @@ export default function ProductForm({ product, onSaved, onCancel }) {
     image_url: product?.image_url ?? '',
     description: product?.description ?? '',
     certification: product?.certification ?? '',
+    wallapop_url: product?.wallapop_url ?? '',
+    vinted_url: product?.vinted_url ?? '',
   })
   const [imageFile, setImageFile] = useState(null)
   const [uploading, setUploading] = useState(false)
@@ -82,6 +84,8 @@ export default function ProductForm({ product, onSaved, onCancel }) {
         image_url: imageUrl || null,
         description: form.description.trim() || null,
         certification: form.category === 'gradeadas_psa' ? (form.certification || null) : null,
+        wallapop_url: form.wallapop_url.trim() || null,
+        vinted_url: form.vinted_url.trim() || null,
       }
 
       let result
@@ -198,6 +202,33 @@ export default function ProductForm({ product, onSaved, onCancel }) {
           />
         </div>
       )}
+
+      <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '1rem' }}>
+        <div>
+          <label style={labelStyle}>URL Wallapop</label>
+          <input
+            type="url"
+            value={form.wallapop_url}
+            onChange={set('wallapop_url')}
+            placeholder="https://es.wallapop.com/item/..."
+            style={inputStyle}
+            onFocus={e => e.target.style.borderColor = '#5cc8e0'}
+            onBlur={e => e.target.style.borderColor = '#163860'}
+          />
+        </div>
+        <div>
+          <label style={labelStyle}>URL Vinted</label>
+          <input
+            type="url"
+            value={form.vinted_url}
+            onChange={set('vinted_url')}
+            placeholder="https://www.vinted.es/items/..."
+            style={inputStyle}
+            onFocus={e => e.target.style.borderColor = '#5cc8e0'}
+            onBlur={e => e.target.style.borderColor = '#163860'}
+          />
+        </div>
+      </div>
 
       <div>
         <label style={labelStyle}>Imagen</label>

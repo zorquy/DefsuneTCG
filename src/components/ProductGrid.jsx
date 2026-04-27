@@ -1,12 +1,14 @@
 import { useState, useEffect } from 'react'
 import { supabase } from '../lib/supabase'
 import ProductCard from './ProductCard'
+import ProductModal from './ProductModal'
 import SectionHeader from './SectionHeader'
 
 export default function ProductGrid({ id, title, subtitle, accent, category }) {
   const [products, setProducts] = useState([])
   const [loading, setLoading] = useState(true)
   const [sortAsc, setSortAsc] = useState(true)
+  const [selectedProduct, setSelectedProduct] = useState(null)
 
   useEffect(() => {
     async function fetchProducts() {
@@ -97,11 +99,22 @@ export default function ProductGrid({ id, title, subtitle, accent, category }) {
             gap: '1rem',
           }}>
             {products.map(product => (
-              <ProductCard key={product.id} product={product} />
+              <ProductCard
+                key={product.id}
+                product={product}
+                onClick={() => setSelectedProduct(product)}
+              />
             ))}
           </div>
         )}
       </div>
+
+      {selectedProduct && (
+        <ProductModal
+          product={selectedProduct}
+          onClose={() => setSelectedProduct(null)}
+        />
+      )}
     </section>
   )
 }
