@@ -245,7 +245,7 @@ export default function ProductModal({ product, onClose }) {
         </div>
 
         {/* Details panel */}
-        <div style={{
+        <div className="modal-details" style={{
           flex: 1, padding: '2rem 2rem 2rem 1.75rem',
           display: 'flex', flexDirection: 'column', gap: '1.25rem',
           overflowY: 'auto', maxHeight: '90vh',
@@ -323,14 +323,22 @@ export default function ProductModal({ product, onClose }) {
         @media (max-width: 600px) {
           .modal-layout {
             flex-direction: column !important;
-            overflow-y: auto !important;
-            max-height: 88svh;
+            height: 88svh !important;
+            max-height: 88svh !important;
           }
           .modal-img-panel {
             width: 100% !important;
-            min-height: 190px !important;
-            max-height: 220px;
-            flex-shrink: 0;
+            height: 220px !important;
+            min-height: 0 !important;
+            max-height: 220px !important;
+            flex-shrink: 0 !important;
+          }
+          .modal-details {
+            flex: 1 !important;
+            min-height: 0 !important;
+            max-height: none !important;
+            overflow-y: auto !important;
+            padding: 1.25rem 1.25rem 1.5rem !important;
           }
         }
       `}</style>

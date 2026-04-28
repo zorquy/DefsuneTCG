@@ -5,10 +5,10 @@ import ProductModal from '../components/ProductModal'
 import Footer from '../components/Footer'
 
 const TABS = [
-  { value: 'gradeadas_pcg', label: 'Gradeadas PCG' },
-  { value: 'gradeadas_psa', label: 'PSA · Beckett · CGC' },
   { value: 'singles',       label: 'Singles' },
-  { value: 'packs',         label: 'Packs / Lotes' },
+  { value: 'gradeadas_pcg', label: 'PCG' },
+  { value: 'gradeadas_psa', label: 'PSA / Beckett / CGC' },
+  { value: 'packs',         label: 'Packs' },
 ]
 
 export default function Catalog() {
@@ -75,7 +75,7 @@ export default function Catalog() {
           </h1>
 
           {/* Tabs */}
-          <div style={{ display: 'flex', gap: '0.5rem', overflowX: 'auto', paddingBottom: '0', flexWrap: 'nowrap' }}
+          <div style={{ display: 'flex', gap: '0.5rem', flexWrap: 'nowrap' }}
             className="catalog-tabs"
           >
             {TABS.map(tab => (
@@ -226,10 +226,20 @@ export default function Catalog() {
       <Footer />
 
       <style>{`
-        .catalog-tabs { scrollbar-width: none; }
-        .catalog-tabs::-webkit-scrollbar { display: none; }
-        @media (max-width: 500px) {
-          .catalog-tabs button { font-size: 0.75rem !important; padding: 0.4rem 0.75rem !important; }
+        @media (max-width: 600px) {
+          .catalog-tabs {
+            flex-wrap: wrap !important;
+            gap: 0.375rem !important;
+          }
+          .catalog-tabs button {
+            flex: 1 1 calc(50% - 0.2rem) !important;
+            border-radius: 8px !important;
+            border-bottom: 1px solid !important;
+            font-size: 0.8rem !important;
+            padding: 0.5rem 0.25rem !important;
+            text-align: center !important;
+            justify-content: center !important;
+          }
         }
       `}</style>
     </>
