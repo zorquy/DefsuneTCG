@@ -5,24 +5,23 @@ import ProductForm from './ProductForm'
 import EventForm from './EventForm'
 
 const TABS = [
-  { key: 'singles',       label: 'Singles',            category: 'singles' },
-  { key: 'pcg',           label: 'Gradeadas PCG',      category: 'gradeadas_pcg' },
-  { key: 'psa',           label: 'PSA / Beckett / CGC', category: 'gradeadas_psa' },
-  { key: 'packs',         label: 'Packs / Lotes',      category: 'packs' },
-  { key: 'events',        label: 'Eventos',            category: null },
+  { key: 'singles', label: 'Singles',          category: 'singles' },
+  { key: 'pcg',     label: 'PCG',              category: 'gradeadas_pcg' },
+  { key: 'psa',     label: 'PSA / Beckett / CGC', category: 'gradeadas_psa' },
+  { key: 'packs',   label: 'Packs',            category: 'packs' },
+  { key: 'events',  label: 'Eventos',          category: null },
 ]
-
-const CERT_LABELS = { PSA: 'PSA', Beckett: 'Beckett', CGC: 'CGC' }
 
 function Modal({ title, children, onClose }) {
   return (
-    <div style={{
-      position: 'fixed', inset: 0, zIndex: 100,
-      display: 'flex', alignItems: 'center', justifyContent: 'center',
-      padding: '1rem',
-      background: 'rgba(3,8,16,0.85)',
-      backdropFilter: 'blur(8px)',
-    }}
+    <div
+      style={{
+        position: 'fixed', inset: 0, zIndex: 100,
+        display: 'flex', alignItems: 'center', justifyContent: 'center',
+        padding: '1rem',
+        background: 'rgba(3,8,16,0.85)',
+        backdropFilter: 'blur(8px)',
+      }}
       onClick={e => { if (e.target === e.currentTarget) onClose() }}
     >
       <div style={{
@@ -35,22 +34,12 @@ function Modal({ title, children, onClose }) {
         overflowY: 'auto',
       }}>
         <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '1.5rem' }}>
-          <h2 style={{
-            fontFamily: 'var(--font-display)',
-            fontSize: '1.25rem',
-            fontWeight: 500,
-            color: '#e8f4ff',
-            margin: 0,
-          }}>
+          <h2 style={{ fontFamily: 'var(--font-display)', fontSize: '1.25rem', fontWeight: 500, color: '#e8f4ff', margin: 0 }}>
             {title}
           </h2>
           <button
             onClick={onClose}
-            style={{
-              background: 'none', border: 'none', cursor: 'pointer',
-              color: '#3d7090', padding: '0.25rem',
-              transition: 'color 0.2s',
-            }}
+            style={{ background: 'none', border: 'none', cursor: 'pointer', color: '#3d7090', padding: '0.25rem', transition: 'color 0.2s' }}
             onMouseEnter={e => e.currentTarget.style.color = '#e8f4ff'}
             onMouseLeave={e => e.currentTarget.style.color = '#3d7090'}
           >
@@ -65,14 +54,46 @@ function Modal({ title, children, onClose }) {
   )
 }
 
+function ActionBtn({ onClick, danger, children }) {
+  return (
+    <button
+      onClick={onClick}
+      style={{
+        padding: '0.375rem 0.75rem',
+        background: 'transparent',
+        border: `1px solid ${danger ? 'rgba(239,68,68,0.25)' : '#163860'}`,
+        borderRadius: '6px',
+        color: danger ? '#f87171' : '#6aa0bc',
+        cursor: 'pointer',
+        fontSize: '0.8rem',
+        fontWeight: 500,
+        transition: 'all 0.2s',
+        whiteSpace: 'nowrap',
+      }}
+      onMouseEnter={e => {
+        e.currentTarget.style.borderColor = danger ? '#f87171' : '#5cc8e0'
+        e.currentTarget.style.color = danger ? '#fca5a5' : '#e8f4ff'
+        if (danger) e.currentTarget.style.background = 'rgba(239,68,68,0.1)'
+      }}
+      onMouseLeave={e => {
+        e.currentTarget.style.borderColor = danger ? 'rgba(239,68,68,0.25)' : '#163860'
+        e.currentTarget.style.color = danger ? '#f87171' : '#6aa0bc'
+        e.currentTarget.style.background = 'transparent'
+      }}
+    >
+      {children}
+    </button>
+  )
+}
+
 export default function AdminDashboard() {
   const { signOut, session } = useAuth()
-  const [activeTab, setActiveTab] = useState('singles')
-  const [products, setProducts] = useState([])
-  const [events, setEvents] = useState([])
-  const [loading, setLoading] = useState(true)
-  const [modal, setModal] = useState(null)
-  const [deleteConfirm, setDeleteConfirm] = useState(null)
+  const [activeTab,    setActiveTab]    = useState('singles')
+  const [products,     setProducts]     = useState([])
+  const [events,       setEvents]       = useState([])
+  const [loading,      setLoading]      = useState(true)
+  const [modal,        setModal]        = useState(null)
+  const [deleteConfirm,setDeleteConfirm]= useState(null)
 
   const currentTab = TABS.find(t => t.key === activeTab)
 
@@ -94,19 +115,17 @@ export default function AdminDashboard() {
   useEffect(() => { fetchData() }, [fetchData])
 
   const handleDelete = async (id, type) => {
-    const table = type === 'event' ? 'events' : 'products'
-    await supabase.from(table).delete().eq('id', id)
+    await supabase.from(type === 'event' ? 'events' : 'products').delete().eq('id', id)
     setDeleteConfirm(null)
     fetchData()
   }
 
-  const handleSaved = () => {
-    setModal(null)
-    fetchData()
-  }
+  const handleSaved = () => { setModal(null); fetchData() }
 
-  const formatPrice = (p) =>
-    Number(p).toLocaleString('es-ES', { style: 'currency', currency: 'EUR' })
+  const formatPrice = (p) => Number(p).toLocaleString('es-ES', { style: 'currency', currency: 'EUR' })
+
+  const formatDate = (d) =>
+    new Date(d + 'T00:00:00').toLocaleDateString('es-ES', { day: '2-digit', month: 'short', year: 'numeric' })
 
   return (
     <div style={{ minHeight: '100vh', background: '#060c1a' }}>
@@ -115,39 +134,36 @@ export default function AdminDashboard() {
         position: 'sticky', top: 0, zIndex: 40,
         background: 'rgba(3,8,16,0.95)',
         backdropFilter: 'blur(12px)',
+        WebkitBackdropFilter: 'blur(12px)',
         borderBottom: '1px solid #0d2540',
-        padding: '0 1.5rem',
-        height: 60,
+        padding: '0 1rem',
+        height: 56,
         display: 'flex', alignItems: 'center', justifyContent: 'space-between',
       }}>
         <a href="/" style={{ textDecoration: 'none' }}>
           <span style={{
             fontFamily: 'var(--font-display)',
-            fontSize: '1.125rem',
-            fontWeight: 600,
-            letterSpacing: '0.1em',
-            textTransform: 'uppercase',
+            fontSize: '1.0625rem', fontWeight: 600,
+            letterSpacing: '0.08em', textTransform: 'uppercase',
             color: '#e8f4ff',
           }}>
             Defsune<span style={{ color: '#5cc8e0' }}>TCG</span>
-            <span style={{ color: '#3d7090', fontSize: '0.75rem', fontFamily: 'var(--font-body)', fontWeight: 400, marginLeft: '0.5rem' }}>
+            <span style={{ color: '#3d7090', fontSize: '0.7rem', fontFamily: 'var(--font-body)', fontWeight: 400, marginLeft: '0.4rem' }}>
               Admin
             </span>
           </span>
         </a>
-        <div style={{ display: 'flex', alignItems: 'center', gap: '1rem' }}>
-          <span style={{ fontSize: '0.8125rem', color: '#3d7090' }}>{session?.user?.email}</span>
+        <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem' }}>
+          <span style={{ fontSize: '0.75rem', color: '#3d7090', display: 'none' }} className="admin-email">
+            {session?.user?.email}
+          </span>
           <button
             onClick={signOut}
             style={{
-              padding: '0.4rem 0.875rem',
-              background: 'transparent',
-              border: '1px solid #163860',
-              borderRadius: '6px',
-              color: '#6aa0bc',
-              cursor: 'pointer',
-              fontSize: '0.8125rem',
-              fontWeight: 500,
+              padding: '0.35rem 0.75rem',
+              background: 'transparent', border: '1px solid #163860',
+              borderRadius: '6px', color: '#6aa0bc',
+              cursor: 'pointer', fontSize: '0.8rem', fontWeight: 500,
               transition: 'all 0.2s',
             }}
             onMouseEnter={e => { e.currentTarget.style.borderColor = '#3d7090'; e.currentTarget.style.color = '#e8f4ff' }}
@@ -158,31 +174,31 @@ export default function AdminDashboard() {
         </div>
       </header>
 
-      <main style={{ maxWidth: '1200px', margin: '0 auto', padding: '2rem 1.5rem' }}>
-        {/* Tabs */}
+      <main style={{ maxWidth: '1200px', margin: '0 auto', padding: '1.5rem 1rem 3rem' }}>
+        {/* Tabs — scrollable on mobile */}
         <div style={{
-          display: 'flex', gap: '0.375rem', flexWrap: 'wrap',
+          display: 'flex', gap: 0,
           borderBottom: '1px solid #0d2540',
-          marginBottom: '2rem',
-          paddingBottom: '0',
+          marginBottom: '1.5rem',
+          overflowX: 'auto',
+          scrollbarWidth: 'none',
         }}>
           {TABS.map(tab => (
             <button
               key={tab.key}
               onClick={() => setActiveTab(tab.key)}
               style={{
-                padding: '0.625rem 1rem',
-                background: 'none',
-                border: 'none',
+                padding: '0.625rem 0.875rem',
+                background: 'none', border: 'none',
                 borderBottom: activeTab === tab.key ? '2px solid #5cc8e0' : '2px solid transparent',
                 color: activeTab === tab.key ? '#e8f4ff' : '#3d7090',
                 cursor: 'pointer',
-                fontSize: '0.875rem',
+                fontSize: '0.8125rem',
                 fontWeight: activeTab === tab.key ? 600 : 400,
-                letterSpacing: '0.02em',
                 transition: 'color 0.2s',
                 marginBottom: '-1px',
                 whiteSpace: 'nowrap',
+                flexShrink: 0,
               }}
               onMouseEnter={e => { if (activeTab !== tab.key) e.currentTarget.style.color = '#90c0dc' }}
               onMouseLeave={e => { if (activeTab !== tab.key) e.currentTarget.style.color = '#3d7090' }}
@@ -193,274 +209,164 @@ export default function AdminDashboard() {
         </div>
 
         {/* Action bar */}
-        <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '1.25rem' }}>
-          <h1 style={{
-            fontFamily: 'var(--font-display)',
-            fontSize: '1.375rem',
-            fontWeight: 500,
-            color: '#e8f4ff',
-            margin: 0,
-          }}>
+        <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '1rem' }}>
+          <h1 style={{ fontFamily: 'var(--font-display)', fontSize: '1.25rem', fontWeight: 500, color: '#e8f4ff', margin: 0 }}>
             {currentTab.label}
           </h1>
           <button
             onClick={() => setModal({ type: activeTab === 'events' ? 'event' : 'product', item: null })}
             style={{
               display: 'inline-flex', alignItems: 'center', gap: '0.375rem',
-              padding: '0.5rem 1rem',
+              padding: '0.5rem 0.875rem',
               background: 'linear-gradient(135deg, #5cc8e0, #3aacc4)',
-              border: 'none',
-              borderRadius: '8px',
-              color: '#030810',
-              cursor: 'pointer',
-              fontSize: '0.875rem',
-              fontWeight: 600,
+              border: 'none', borderRadius: '8px',
+              color: '#030810', cursor: 'pointer',
+              fontSize: '0.8125rem', fontWeight: 600,
               letterSpacing: '0.03em',
-              transition: 'opacity 0.2s',
             }}
-            onMouseEnter={e => e.currentTarget.style.opacity = '0.9'}
-            onMouseLeave={e => e.currentTarget.style.opacity = '1'}
           >
-            <svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" strokeWidth="2">
+            <svg width="13" height="13" viewBox="0 0 14 14" fill="none" stroke="currentColor" strokeWidth="2.5">
               <line x1="7" y1="1" x2="7" y2="13"/><line x1="1" y1="7" x2="13" y2="7"/>
             </svg>
-            {activeTab === 'events' ? 'Nuevo evento' : 'Nuevo producto'}
+            {activeTab === 'events' ? 'Nuevo evento' : 'Añadir'}
           </button>
         </div>
 
-        {/* Content */}
+        {/* Skeleton */}
         {loading && (
           <div style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem' }}>
             {[1,2,3,4,5].map(i => (
-              <div key={i} className="skeleton" style={{ height: 64, borderRadius: 10 }} />
+              <div key={i} className="skeleton" style={{ height: 68, borderRadius: 10 }} />
             ))}
           </div>
         )}
 
+        {/* Products list */}
         {!loading && activeTab !== 'events' && (
-          <div style={{
-            background: '#091628',
-            border: '1px solid #0d2540',
-            borderRadius: '12px',
-            overflow: 'hidden',
-          }}>
+          <div style={{ background: '#091628', border: '1px solid #0d2540', borderRadius: '12px', overflow: 'hidden' }}>
             {products.length === 0 ? (
-              <div style={{ padding: '3rem', textAlign: 'center', color: '#3d7090' }}>
-                Sin productos. Añade el primero.
+              <div style={{ padding: '3rem', textAlign: 'center', color: '#3d7090', fontSize: '0.9rem' }}>
+                Sin productos en esta categoría. Añade el primero.
               </div>
-            ) : (
-              <table style={{ width: '100%', borderCollapse: 'collapse' }}>
-                <thead>
-                  <tr style={{ borderBottom: '1px solid #0d2540' }}>
-                    {['Imagen', 'Nombre', 'Precio', 'Certif.', 'Acciones'].map(h => (
-                      <th key={h} style={{
-                        padding: '0.75rem 1rem',
-                        textAlign: 'left',
-                        fontSize: '0.75rem',
-                        fontWeight: 600,
-                        textTransform: 'uppercase',
-                        letterSpacing: '0.08em',
-                        color: '#3d7090',
+            ) : products.map((p, i) => (
+              <div
+                key={p.id}
+                style={{
+                  display: 'flex', alignItems: 'center', gap: '0.875rem',
+                  padding: '0.75rem 1rem',
+                  borderBottom: i < products.length - 1 ? '1px solid #0d2540' : 'none',
+                  transition: 'background 0.15s',
+                }}
+                onMouseEnter={e => e.currentTarget.style.background = 'rgba(13,37,64,0.4)'}
+                onMouseLeave={e => e.currentTarget.style.background = 'transparent'}
+              >
+                {/* Thumbnail */}
+                {p.image_url ? (
+                  <img src={p.image_url} alt={p.name}
+                    style={{ width: 32, height: 44, objectFit: 'cover', borderRadius: 4, flexShrink: 0 }} />
+                ) : (
+                  <div style={{ width: 32, height: 44, background: '#0d2540', borderRadius: 4, flexShrink: 0 }} />
+                )}
+
+                {/* Info */}
+                <div style={{ flex: 1, minWidth: 0 }}>
+                  <div style={{
+                    color: '#e8f4ff', fontSize: '0.875rem', fontWeight: 500,
+                    overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap',
+                  }}>
+                    {p.name}
+                  </div>
+                  <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', marginTop: '0.2rem', flexWrap: 'wrap' }}>
+                    <span style={{ color: '#5cc8e0', fontSize: '0.8rem', fontWeight: 600 }}>
+                      {formatPrice(p.price)}
+                    </span>
+                    {p.certification && (
+                      <span style={{
+                        padding: '0.1rem 0.4rem', borderRadius: '4px',
+                        fontSize: '0.65rem', fontWeight: 700,
+                        background: 'rgba(59,130,246,0.15)',
+                        border: '1px solid rgba(59,130,246,0.3)',
+                        color: '#93c5fd',
                       }}>
-                        {h}
-                      </th>
-                    ))}
-                  </tr>
-                </thead>
-                <tbody>
-                  {products.map((p, i) => (
-                    <tr
-                      key={p.id}
-                      style={{
-                        borderBottom: i < products.length - 1 ? '1px solid #0d2540' : 'none',
-                        transition: 'background 0.15s',
-                      }}
-                      onMouseEnter={e => e.currentTarget.style.background = 'rgba(13,37,64,0.4)'}
-                      onMouseLeave={e => e.currentTarget.style.background = 'transparent'}
-                    >
-                      <td style={{ padding: '0.75rem 1rem' }}>
-                        {p.image_url ? (
-                          <img
-                            src={p.image_url}
-                            alt={p.name}
-                            style={{ width: 36, height: 50, objectFit: 'cover', borderRadius: 4 }}
-                          />
-                        ) : (
-                          <div style={{ width: 36, height: 50, background: '#0d2540', borderRadius: 4 }} />
-                        )}
-                      </td>
-                      <td style={{ padding: '0.75rem 1rem', color: '#e8f4ff', fontSize: '0.9rem', maxWidth: 220 }}>
-                        <div style={{ fontWeight: 500 }}>{p.name}</div>
-                        {p.description && (
-                          <div style={{
-                            fontSize: '0.75rem', color: '#3d7090', marginTop: '0.2rem',
-                            overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap',
-                          }}>
-                            {p.description}
-                          </div>
-                        )}
-                      </td>
-                      <td style={{ padding: '0.75rem 1rem', color: '#5cc8e0', fontWeight: 600, fontSize: '0.9rem', whiteSpace: 'nowrap' }}>
-                        {formatPrice(p.price)}
-                      </td>
-                      <td style={{ padding: '0.75rem 1rem' }}>
-                        {p.certification ? (
-                          <span style={{
-                            padding: '0.2rem 0.5rem',
-                            borderRadius: '6px',
-                            fontSize: '0.7rem',
-                            fontWeight: 700,
-                            background: 'rgba(59,130,246,0.15)',
-                            border: '1px solid rgba(59,130,246,0.3)',
-                            color: '#93c5fd',
-                          }}>
-                            {p.certification}
-                          </span>
-                        ) : <span style={{ color: '#3d7090' }}>—</span>}
-                      </td>
-                      <td style={{ padding: '0.75rem 1rem' }}>
-                        <div style={{ display: 'flex', gap: '0.5rem' }}>
-                          <button
-                            onClick={() => setModal({ type: 'product', item: p })}
-                            style={{
-                              padding: '0.375rem 0.75rem',
-                              background: 'transparent',
-                              border: '1px solid #163860',
-                              borderRadius: '6px',
-                              color: '#6aa0bc',
-                              cursor: 'pointer',
-                              fontSize: '0.8rem',
-                              fontWeight: 500,
-                              transition: 'all 0.2s',
-                            }}
-                            onMouseEnter={e => { e.currentTarget.style.borderColor = '#5cc8e0'; e.currentTarget.style.color = '#e8f4ff' }}
-                            onMouseLeave={e => { e.currentTarget.style.borderColor = '#163860'; e.currentTarget.style.color = '#6aa0bc' }}
-                          >
-                            Editar
-                          </button>
-                          <button
-                            onClick={() => setDeleteConfirm({ id: p.id, name: p.name, type: 'product' })}
-                            style={{
-                              padding: '0.375rem 0.75rem',
-                              background: 'transparent',
-                              border: '1px solid rgba(239,68,68,0.2)',
-                              borderRadius: '6px',
-                              color: '#f87171',
-                              cursor: 'pointer',
-                              fontSize: '0.8rem',
-                              fontWeight: 500,
-                              transition: 'all 0.2s',
-                            }}
-                            onMouseEnter={e => { e.currentTarget.style.background = 'rgba(239,68,68,0.1)'; e.currentTarget.style.borderColor = '#f87171' }}
-                            onMouseLeave={e => { e.currentTarget.style.background = 'transparent'; e.currentTarget.style.borderColor = 'rgba(239,68,68,0.2)' }}
-                          >
-                            Eliminar
-                          </button>
-                        </div>
-                      </td>
-                    </tr>
-                  ))}
-                </tbody>
-              </table>
-            )}
+                        {p.certification}
+                      </span>
+                    )}
+                  </div>
+                </div>
+
+                {/* Actions */}
+                <div style={{ display: 'flex', gap: '0.375rem', flexShrink: 0 }}>
+                  <ActionBtn onClick={() => setModal({ type: 'product', item: p })}>Editar</ActionBtn>
+                  <ActionBtn danger onClick={() => setDeleteConfirm({ id: p.id, name: p.name, type: 'product' })}>
+                    Eliminar
+                  </ActionBtn>
+                </div>
+              </div>
+            ))}
           </div>
         )}
 
+        {/* Events list */}
         {!loading && activeTab === 'events' && (
-          <div style={{
-            background: '#091628',
-            border: '1px solid #0d2540',
-            borderRadius: '12px',
-            overflow: 'hidden',
-          }}>
+          <div style={{ background: '#091628', border: '1px solid #0d2540', borderRadius: '12px', overflow: 'hidden' }}>
             {events.length === 0 ? (
-              <div style={{ padding: '3rem', textAlign: 'center', color: '#3d7090' }}>
+              <div style={{ padding: '3rem', textAlign: 'center', color: '#3d7090', fontSize: '0.9rem' }}>
                 Sin eventos. Añade el primero.
               </div>
-            ) : (
-              <table style={{ width: '100%', borderCollapse: 'collapse' }}>
-                <thead>
-                  <tr style={{ borderBottom: '1px solid #0d2540' }}>
-                    {['Nombre', 'Fecha', 'Ubicación', 'Acciones'].map(h => (
-                      <th key={h} style={{
-                        padding: '0.75rem 1rem',
-                        textAlign: 'left',
-                        fontSize: '0.75rem',
-                        fontWeight: 600,
-                        textTransform: 'uppercase',
-                        letterSpacing: '0.08em',
-                        color: '#3d7090',
-                      }}>
-                        {h}
-                      </th>
-                    ))}
-                  </tr>
-                </thead>
-                <tbody>
-                  {events.map((ev, i) => (
-                    <tr
-                      key={ev.id}
-                      style={{
-                        borderBottom: i < events.length - 1 ? '1px solid #0d2540' : 'none',
-                        transition: 'background 0.15s',
-                      }}
-                      onMouseEnter={e => e.currentTarget.style.background = 'rgba(13,37,64,0.4)'}
-                      onMouseLeave={e => e.currentTarget.style.background = 'transparent'}
-                    >
-                      <td style={{ padding: '0.75rem 1rem', color: '#e8f4ff', fontWeight: 500, fontSize: '0.9rem' }}>
-                        {ev.name}
-                      </td>
-                      <td style={{ padding: '0.75rem 1rem', color: '#5cc8e0', fontSize: '0.875rem', whiteSpace: 'nowrap' }}>
-                        {new Date(ev.date + 'T00:00:00').toLocaleDateString('es-ES', { day: '2-digit', month: 'short', year: 'numeric' })}
-                      </td>
-                      <td style={{ padding: '0.75rem 1rem', color: '#6aa0bc', fontSize: '0.875rem' }}>
-                        {ev.location}
-                      </td>
-                      <td style={{ padding: '0.75rem 1rem' }}>
-                        <div style={{ display: 'flex', gap: '0.5rem' }}>
-                          <button
-                            onClick={() => setModal({ type: 'event', item: ev })}
-                            style={{
-                              padding: '0.375rem 0.75rem',
-                              background: 'transparent',
-                              border: '1px solid #163860',
-                              borderRadius: '6px',
-                              color: '#6aa0bc',
-                              cursor: 'pointer',
-                              fontSize: '0.8rem',
-                              fontWeight: 500,
-                              transition: 'all 0.2s',
-                            }}
-                            onMouseEnter={e => { e.currentTarget.style.borderColor = '#5cc8e0'; e.currentTarget.style.color = '#e8f4ff' }}
-                            onMouseLeave={e => { e.currentTarget.style.borderColor = '#163860'; e.currentTarget.style.color = '#6aa0bc' }}
-                          >
-                            Editar
-                          </button>
-                          <button
-                            onClick={() => setDeleteConfirm({ id: ev.id, name: ev.name, type: 'event' })}
-                            style={{
-                              padding: '0.375rem 0.75rem',
-                              background: 'transparent',
-                              border: '1px solid rgba(239,68,68,0.2)',
-                              borderRadius: '6px',
-                              color: '#f87171',
-                              cursor: 'pointer',
-                              fontSize: '0.8rem',
-                              fontWeight: 500,
-                              transition: 'all 0.2s',
-                            }}
-                            onMouseEnter={e => { e.currentTarget.style.background = 'rgba(239,68,68,0.1)'; e.currentTarget.style.borderColor = '#f87171' }}
-                            onMouseLeave={e => { e.currentTarget.style.background = 'transparent'; e.currentTarget.style.borderColor = 'rgba(239,68,68,0.2)' }}
-                          >
-                            Eliminar
-                          </button>
-                        </div>
-                      </td>
-                    </tr>
-                  ))}
-                </tbody>
-              </table>
-            )}
+            ) : events.map((ev, i) => (
+              <div
+                key={ev.id}
+                style={{
+                  display: 'flex', alignItems: 'center', gap: '0.875rem',
+                  padding: '0.75rem 1rem',
+                  borderBottom: i < events.length - 1 ? '1px solid #0d2540' : 'none',
+                  transition: 'background 0.15s',
+                }}
+                onMouseEnter={e => e.currentTarget.style.background = 'rgba(13,37,64,0.4)'}
+                onMouseLeave={e => e.currentTarget.style.background = 'transparent'}
+              >
+                {/* Date block */}
+                <div style={{
+                  flexShrink: 0, textAlign: 'center',
+                  background: 'rgba(92,200,224,0.08)',
+                  border: '1px solid rgba(92,200,224,0.2)',
+                  borderRadius: '8px',
+                  padding: '0.3rem 0.6rem',
+                  minWidth: 52,
+                }}>
+                  <div style={{ color: '#5cc8e0', fontSize: '0.7rem', fontWeight: 600, letterSpacing: '0.05em' }}>
+                    {new Date(ev.date + 'T00:00:00').toLocaleDateString('es-ES', { month: 'short' }).toUpperCase()}
+                  </div>
+                  <div style={{ color: '#e8f4ff', fontSize: '1.1rem', fontWeight: 700, lineHeight: 1 }}>
+                    {new Date(ev.date + 'T00:00:00').getDate()}
+                  </div>
+                </div>
+
+                {/* Info */}
+                <div style={{ flex: 1, minWidth: 0 }}>
+                  <div style={{
+                    color: '#e8f4ff', fontSize: '0.875rem', fontWeight: 500,
+                    overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap',
+                  }}>
+                    {ev.name}
+                  </div>
+                  {ev.location && (
+                    <div style={{ color: '#6aa0bc', fontSize: '0.78rem', marginTop: '0.15rem',
+                      overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>
+                      {ev.location}
+                    </div>
+                  )}
+                </div>
+
+                {/* Actions */}
+                <div style={{ display: 'flex', gap: '0.375rem', flexShrink: 0 }}>
+                  <ActionBtn onClick={() => setModal({ type: 'event', item: ev })}>Editar</ActionBtn>
+                  <ActionBtn danger onClick={() => setDeleteConfirm({ id: ev.id, name: ev.name, type: 'event' })}>
+                    Eliminar
+                  </ActionBtn>
+                </div>
+              </div>
+            ))}
           </div>
         )}
       </main>
@@ -483,24 +389,21 @@ export default function AdminDashboard() {
         </Modal>
       )}
 
-      {/* Delete confirm modal */}
+      {/* Delete confirm */}
       {deleteConfirm && (
         <Modal title="Confirmar eliminación" onClose={() => setDeleteConfirm(null)}>
           <p style={{ color: '#90c0dc', fontSize: '0.9375rem', marginBottom: '1.5rem' }}>
-            ¿Seguro que quieres eliminar <strong style={{ color: '#e8f4ff' }}>"{deleteConfirm.name}"</strong>? Esta acción no se puede deshacer.
+            ¿Seguro que quieres eliminar{' '}
+            <strong style={{ color: '#e8f4ff' }}>"{deleteConfirm.name}"</strong>?
+            Esta acción no se puede deshacer.
           </p>
           <div style={{ display: 'flex', gap: '0.75rem', justifyContent: 'flex-end' }}>
             <button
               onClick={() => setDeleteConfirm(null)}
               style={{
-                padding: '0.625rem 1.25rem',
-                background: 'transparent',
-                border: '1px solid #163860',
-                borderRadius: '8px',
-                color: '#6aa0bc',
-                cursor: 'pointer',
-                fontSize: '0.9rem',
-                fontWeight: 500,
+                padding: '0.625rem 1.25rem', background: 'transparent',
+                border: '1px solid #163860', borderRadius: '8px',
+                color: '#6aa0bc', cursor: 'pointer', fontSize: '0.9rem', fontWeight: 500,
               }}
             >
               Cancelar
@@ -511,15 +414,12 @@ export default function AdminDashboard() {
                 padding: '0.625rem 1.25rem',
                 background: 'rgba(239,68,68,0.15)',
                 border: '1px solid rgba(239,68,68,0.4)',
-                borderRadius: '8px',
-                color: '#fca5a5',
-                cursor: 'pointer',
-                fontSize: '0.9rem',
-                fontWeight: 600,
-                transition: 'all 0.2s',
+                borderRadius: '8px', color: '#fca5a5',
+                cursor: 'pointer', fontSize: '0.9rem', fontWeight: 600,
+                transition: 'background 0.2s',
               }}
-              onMouseEnter={e => { e.currentTarget.style.background = 'rgba(239,68,68,0.25)' }}
-              onMouseLeave={e => { e.currentTarget.style.background = 'rgba(239,68,68,0.15)' }}
+              onMouseEnter={e => e.currentTarget.style.background = 'rgba(239,68,68,0.25)'}
+              onMouseLeave={e => e.currentTarget.style.background = 'rgba(239,68,68,0.15)'}
             >
               Eliminar
             </button>

@@ -13,7 +13,7 @@ const SOCIAL_LINKS = [
   },
   {
     label: 'Wallapop',
-    href: 'https://wallapop.com',
+    href: 'https://es.wallapop.com/user/fernandox-64512175?_uid=64512175&_pid=wi',
     icon: (
       <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
         <path d="M12 2C6.477 2 2 6.477 2 12s4.477 10 10 10 10-4.477 10-10S17.523 2 12 2zm-1 14.5l-4-4 1.5-1.5 2.5 2.5 5.5-5.5 1.5 1.5-7 7z"/>
@@ -23,7 +23,7 @@ const SOCIAL_LINKS = [
   },
   {
     label: 'Vinted',
-    href: 'https://vinted.es',
+    href: 'https://www.vinted.es/member/262708592-fernandotcg',
     icon: (
       <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
         <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 15l-5-5 1.41-1.41L11 14.17l7.59-7.59L20 8l-9 9z"/>

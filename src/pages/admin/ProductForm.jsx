@@ -3,9 +3,9 @@ import { supabase } from '../../lib/supabase'
 
 const CATEGORIES = [
   { value: 'singles',        label: 'Singles' },
-  { value: 'gradeadas_pcg',  label: 'Gradeadas PCG' },
-  { value: 'gradeadas_psa',  label: 'Gradeadas PSA / Beckett / CGC' },
-  { value: 'packs',          label: 'Packs / Lotes' },
+  { value: 'gradeadas_pcg',  label: 'PCG' },
+  { value: 'gradeadas_psa',  label: 'PSA / Beckett / CGC' },
+  { value: 'packs',          label: 'Packs' },
 ]
 
 const CERTIFICATIONS = ['PSA', 'Beckett', 'CGC']

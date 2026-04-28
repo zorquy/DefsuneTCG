@@ -74,8 +74,9 @@ export default function BuySection() {
           maxWidth: '520px',
         }}>
           Contacta por cualquier canal, dime qué carta o lote te interesa y lo cerramos.
-          También me encuentras en <strong style={{ color: '#90c0dc', fontWeight: 500 }}>Wallapop</strong> y{' '}
-          <strong style={{ color: '#90c0dc', fontWeight: 500 }}>Vinted</strong>.
+          También me encuentras en{' '}
+          <a href="https://es.wallapop.com/user/fernandox-64512175?_uid=64512175&_pid=wi" target="_blank" rel="noopener noreferrer" style={{ color: '#90c0dc', fontWeight: 500 }}>Wallapop</a> y{' '}
+          <a href="https://www.vinted.es/member/262708592-fernandotcg" target="_blank" rel="noopener noreferrer" style={{ color: '#90c0dc', fontWeight: 500 }}>Vinted</a>.
         </p>
 
         <div style={{
