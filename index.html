@@ -2,9 +2,10 @@
 <html lang="es">
   <head>
     <meta charset="UTF-8" />
-    <link rel="icon" type="image/png" href="/logo.png" />
-    <link rel="apple-touch-icon" href="/logo.png" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="apple-touch-icon" href="/logo-opt.png" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#060c1a" />
     <title>DEFSUNETCG — Coleccionables TCG de confianza</title>
     <meta name="description" content="Vendedor particular de cartas TCG: singles, cartas gradeadas PSA, Beckett, CGC y PCG, packs y lotes. Compra y venta por contacto directo." />
     <meta property="og:title" content="DEFSUNETCG — Coleccionables TCG" />
@@ -12,9 +13,15 @@
     <meta property="og:image" content="/og-image.jpg" />
     <meta property="og:type" content="website" />
     <meta name="twitter:card" content="summary_large_image" />
+    <!-- LCP image preload -->
+    <link rel="preload" as="image" href="/logo.webp" type="image/webp" />
+    <!-- Preconnect para Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
+    <!-- Fuentes no bloqueantes: se cargan en background y se aplican al estar listas -->
+    <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600&display=swap" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600&display=swap" media="print" onload="this.media='all'" />
+    <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600&display=swap" /></noscript>
   </head>
   <body>
     <div id="root"></div>

@@ -1,6 +1,36 @@
 import { useState } from 'react'
 import { supabase } from '../../lib/supabase'
 
+const MAX_DIMENSION = 1920
+const JPEG_QUALITY  = 0.82
+
+function compressImage(file) {
+  return new Promise((resolve) => {
+    const img = new Image()
+    const url = URL.createObjectURL(file)
+    img.onload = () => {
+      URL.revokeObjectURL(url)
+      let { width, height } = img
+      if (width > MAX_DIMENSION || height > MAX_DIMENSION) {
+        const ratio = Math.min(MAX_DIMENSION / width, MAX_DIMENSION / height)
+        width  = Math.round(width  * ratio)
+        height = Math.round(height * ratio)
+      }
+      const canvas = document.createElement('canvas')
+      canvas.width  = width
+      canvas.height = height
+      canvas.getContext('2d').drawImage(img, 0, 0, width, height)
+      canvas.toBlob(
+        (blob) => resolve(new File([blob], file.name.replace(/\.[^.]+$/, '.jpg'), { type: 'image/jpeg' })),
+        'image/jpeg',
+        JPEG_QUALITY,
+      )
+    }
+    img.onerror = () => { URL.revokeObjectURL(url); resolve(file) }
+    img.src = url
+  })
+}
+
 const CATEGORIES = [
   { value: 'singles',        label: 'Singles' },
   { value: 'gradeadas_pcg',  label: 'PCG' },
@@ -81,9 +111,9 @@ export default function ProductForm({ product, onSaved, onCancel }) {
   }
 
   const uploadSingleFile = async (file) => {
-    const ext  = file.name.split('.').pop()
-    const path = `${Date.now()}-${Math.random().toString(36).slice(2)}.${ext}`
-    const { error } = await supabase.storage.from('product-images').upload(path, file, { upsert: true })
+    const compressed = await compressImage(file)
+    const path = `${Date.now()}-${Math.random().toString(36).slice(2)}.jpg`
+    const { error } = await supabase.storage.from('product-images').upload(path, compressed, { upsert: true, contentType: 'image/jpeg' })
     if (error) throw new Error('Error subiendo imagen: ' + error.message)
     const { data: { publicUrl } } = supabase.storage.from('product-images').getPublicUrl(path)
     return publicUrl

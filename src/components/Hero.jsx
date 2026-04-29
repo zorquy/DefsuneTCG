@@ -75,16 +75,23 @@ export default function Hero() {
           filter: 'drop-shadow(0 0 32px rgba(92,200,224,0.3))',
         }}
       >
-        <img
-          src="/logo.png"
-          alt="DefsuneTCG"
-          style={{
-            width: 140, height: 140,
-            borderRadius: '50%',
-            objectFit: 'cover',
-            display: 'block',
-          }}
-        />
+        <picture>
+          <source srcSet="/logo.webp" type="image/webp" />
+          <img
+            src="/logo-opt.png"
+            alt="DefsuneTCG"
+            width={140}
+            height={140}
+            fetchPriority="high"
+            decoding="sync"
+            style={{
+              width: 140, height: 140,
+              borderRadius: '50%',
+              objectFit: 'cover',
+              display: 'block',
+            }}
+          />
+        </picture>
       </div>
 
       {/* Title */}
