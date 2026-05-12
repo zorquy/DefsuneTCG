@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Pingu Collects</title>
   <meta name="description" content="Coleccionista de cartas TCG. Comunidad, pulls y buenas vibes." />
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🐧</text></svg>" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;900&display=swap" rel="stylesheet" />
   <style>
@@ -145,10 +146,14 @@
       content: '';
       position: absolute;
       inset: 0;
+      z-index: 0;
       background: linear-gradient(135deg, rgba(125,222,224,.07) 0%, transparent 60%);
       opacity: 0;
       transition: opacity .22s ease;
+      pointer-events: none;
     }
+
+    .store-card > * { position: relative; z-index: 1; }
 
     .store-card:hover {
       border-color: rgba(125,222,224,.45);
@@ -301,7 +306,7 @@
   <div class="profile">
     <div class="avatar-ring">
       <div class="avatar-inner">
-        <img src="logo.png" alt="Pingu Collects" />
+        <img src="logo.png" alt="Pingu Collects" loading="lazy" />
       </div>
     </div>
     <div class="profile-name">Pingu Collects</div>
@@ -311,7 +316,7 @@
   <!-- Tiendas -->
   <div class="section-label">🛒 Tiendas con descuento</div>
 
-  <a href="https://eu.vaultx.com/?ghref=25025%3A1311097" target="_blank" rel="noopener" class="store-card">
+  <a href="https://eu.vaultx.com/?ghref=25025%3A1311097" target="_blank" rel="noopener noreferrer" class="store-card">
     <div class="store-icon bg-vaultx">🏦</div>
     <div class="store-info">
       <div class="store-name">VaultX</div>
@@ -324,7 +329,7 @@
     </div>
   </a>
 
-  <a href="https://gemloader.com/" target="_blank" rel="noopener" class="store-card">
+  <a href="https://gemloader.com/" target="_blank" rel="noopener noreferrer" class="store-card">
     <div class="store-icon bg-gem">💎</div>
     <div class="store-info">
       <div class="store-name">Gemloader</div>
@@ -337,7 +342,7 @@
     </div>
   </a>
 
-  <a href="https://pokechewe.com/" target="_blank" rel="noopener" class="store-card">
+  <a href="https://pokechewe.com/" target="_blank" rel="noopener noreferrer" class="store-card">
     <div class="store-icon bg-poke">🎁</div>
     <div class="store-info">
       <div class="store-name">Pokechewe</div>
@@ -355,7 +360,7 @@
   <!-- Redes -->
   <div class="section-label">📱 Sígueme</div>
 
-  <a href="https://t.me/pingucollects" target="_blank" rel="noopener" class="social-card">
+  <a href="https://t.me/pingucollects" target="_blank" rel="noopener noreferrer" class="social-card">
     <div class="social-icon bg-telegram">
       <!-- Telegram -->
       <svg width="22" height="22" viewBox="0 0 24 24" fill="white">
@@ -369,7 +374,7 @@
     <span class="chevron">›</span>
   </a>
 
-  <a href="https://www.instagram.com/pingucollects/" target="_blank" rel="noopener" class="social-card">
+  <a href="https://www.instagram.com/pingucollects/" target="_blank" rel="noopener noreferrer" class="social-card">
     <div class="social-icon bg-instagram">
       <!-- Instagram -->
       <svg width="22" height="22" viewBox="0 0 24 24" fill="white">
@@ -383,7 +388,7 @@
     <span class="chevron">›</span>
   </a>
 
-  <a href="https://www.tiktok.com/@pingucollects" target="_blank" rel="noopener" class="social-card">
+  <a href="https://www.tiktok.com/@pingucollects" target="_blank" rel="noopener noreferrer" class="social-card">
     <div class="social-icon bg-tiktok">
       <!-- TikTok -->
       <svg width="20" height="20" viewBox="0 0 24 24" fill="white">
@@ -397,7 +402,7 @@
     <span class="chevron">›</span>
   </a>
 
-  <a href="https://www.youtube.com/@pingucollects" target="_blank" rel="noopener" class="social-card">
+  <a href="https://www.youtube.com/@pingucollects" target="_blank" rel="noopener noreferrer" class="social-card">
     <div class="social-icon bg-youtube">
       <!-- YouTube -->
       <svg width="22" height="22" viewBox="0 0 24 24" fill="white">
